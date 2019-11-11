@@ -127,7 +127,8 @@ function alterarDados(elemento) {
         novoIdCampo = campoEditarIdUsuario.value;
         campo = "#campoUsuario";
         tabela = "#tabelaUsuarios";
-        possuiPendencia = usuarioJaPegouChave(dadosEditarNome);
+        // possuiPendencia = usuarioJaPegouChave(dadosEditarNome);
+        possuiPendencia = false;
         // banco
         tabelaBanco = "Usuario";
     }
@@ -170,14 +171,6 @@ function alterarDados(elemento) {
                                 break;
                             }
                         }
-                        //alterando o valor na solicitacao...                    
-                        var valor = document.getElementById(campo.replace(/#/, "")).querySelectorAll("option");
-                        for (let index = 0; index < valor.length; index++) {
-                            if (valor[index].value == dadosEditarNome) {
-                                valor[index].innerHTML = novoValorCampo;
-                                break;
-                            }
-                        }
 
 
                         swal("Ok", "Os dados foram alterados.", {
@@ -213,11 +206,13 @@ function removerDados(objButtonParentNode) {
 
     if (objetoId == "tabelaChaves") {
         campo = "campoChave";
-        possuiPendencia = chaveFoiSolicitada(valorNome);
+        // possuiPendencia = chaveFoiSolicitada(valorNome);
+        possuiPendencia = false;
         tabelaBanco = "Chave";
     } else {
         campo = "campoUsuario";
-        possuiPendencia = possuiPendencia = usuarioJaPegouChave(valorNome);
+        // possuiPendencia = possuiPendencia = usuarioJaPegouChave(valorNome);
+        possuiPendencia = false;
         tabelaBanco = "Usuario";
     }
 
@@ -231,17 +226,10 @@ function removerDados(objButtonParentNode) {
         })
             .then((willDelete) => {
                 if (willDelete) {
+
                     // removendo da lista
                     objButtonParentNode.parentNode.remove(objButtonParentNode);
-                    // removendo do input                    
-                    var elementoSelect = document.getElementById(campo);
-                    for (let index = 0; index < elementoSelect.options.length; index++) {
-                        if (elementoSelect.options[index].value == valorNome) {
-                            elementoSelect.options[index].remove(index);
-                            //remove do banco                            
-                            Dao.remove(tabelaBanco, valorNome);
-                        }
-                    }
+                    Dao.remove(tabelaBanco, valorNome);
 
                     swal("Dados removidos com sucesso!", {
                         icon: "success",

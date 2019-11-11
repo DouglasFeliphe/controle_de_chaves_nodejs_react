@@ -1,0 +1,27 @@
+body>main>div:nth-child(1)>i {
+    font-size: 70px;
+    /* border: 1px solid #000; */
+}
+
+.img-chave {
+    margin: 15px;
+    width: 150px;
+    height: 150px;
+    /* box-shadow: 1px 1px 1px #333; */
+    /* box-shadow: 1px 1px 2px #333; */
+    /* transition: all .3s; */
+}
+
+.img-chave:hover {
+    color: lightblue!important;
+    /* box-shadow: 1px 1px 1px 5px #333; */
+    transform: translateY(3px);
+    /* filter: hue-rotate(320deg) saturate(2); */
+    background-color: #000;
+}
+
+/* body>main>div:nth-child(1) { */
+
+/* background-image: url(../img/porta\ chave\ 3.jpg); */
+
+/* } */

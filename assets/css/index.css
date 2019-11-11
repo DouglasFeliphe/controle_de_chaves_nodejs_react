@@ -10,8 +10,6 @@
 	-moz-osx-font-smoothing: grayscale; */
 }
 
-
-
 .container {
     margin: 155px;
     padding: 25px;
@@ -47,37 +45,21 @@
     overflow: auto;
 }
 
-/* Painel Solicitações */
-
-#camposDevolucao>.content>#tabelaSolicitacoes {
-    border-radius:  0px 0px 16px 16px;
-    box-shadow: 1px 1px 1px 1px #333;
-}
-
-/* efeito de transição ao passar em cada coluna das tabelas */
-
-.table>tbody>tr>td {
-    transition: all .1s;
-    text-align: center;
-    /* vertical-align: none; */
-}
-
-
-#camposDevolucao>.content>#tabelaSolicitacoes >tbody>tr>td:hover {
-    border: 2px solid orange;
-     font-size: 23px;
-}
-
- /* .table>tbody>tr>td:hover {
+/* .table>tbody>tr>td:hover {
     /* background: skyblue; */
-    /* border: 1px solid;
+
+/* border: 1px solid;
     border-top: 1px solid; */
-    /* border: 2px solid orange; */
-    /* background: lightseagreen; */
-    /* background: dodgerblue; */
-    /* font-size: 23px;
+
+/* border: 2px solid orange; */
+
+/* background: lightseagreen; */
+
+/* background: dodgerblue; */
+
+/* font-size: 23px;
     font-weight: bold; 
-} */ 
+} */
 
 #panelAdicionar input[type="text"] {
     margin: 0 0 23px 0;
@@ -90,22 +72,27 @@
     /* border: 1px solid #a2a2a2; */
     /* border-radius: 0 0 16px 16px; */
     /* border: none; */
-
 }
-#tabelaReservas{
+
+#tabelaReservas {
     /* border: none; */
     /* border-radius: 16px;
-    /* box-shadow: 1px 1px 1px 1px #333; */ 
-
-    border-radius:  0px 0px 16px 16px;
+    /* box-shadow: 1px 1px 1px 1px #333; */
+    border-radius: 0px 0px 16px 16px;
     box-shadow: 1px 1px 1px 1px #333;
-
 }
-
 
 #tabelaReservas>tbody>tr>th, #tabelaReservas>tbody>tr>td {
     padding: 35px;
     margin: 35px;
+}
+
+#btnReservar>img {
+    box-shadow: 1px 1px 1px #333;
+}
+
+#btnReservar>img:hover {
+    box-shadow: 1px 1px 5px #333;
 }
 
 .popover.fade.right.in>.popover-content {
@@ -129,6 +116,7 @@
 }
 
 /* ... */
+
 #rodape {
     padding: 55px 0 0 0;
 }

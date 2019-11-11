@@ -11,9 +11,8 @@
   font-size: 15px;
   font-weight: bold;
 }
-#tabelaUsuarios > tr ,#tabelaChaves> tr > td{
-  
-  /* display: flex; */
+#tabelaUsuarios > tr ,#tabelaChaves> tr > td{  
+
   justify-content: center;
 }
 

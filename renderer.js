@@ -47,46 +47,30 @@ ready(function () {
         console.log("tabela Chave criada!");
     };
 
-    if (Dao.getCollection("Solicitacao") == null) {
-        Dao.criarTabela("Solicitacao");
-        console.log("tabela Solicitação criada!");
-    };
+    // if (Dao.getCollection("Solicitacao") == null) {
+    //     Dao.criarTabela("Solicitacao");
+    //     console.log("tabela Solicitação criada!");
+    // };
 
-    let colecao;
-    let campoPainel;
-    let tabelaPainelAdicionar;
-    let modal;
-    let campoEditar;
-    let campoEditarId;
-    let campoReserva;
-
-
+    listarDados(
+        "Chave",
+        "#tabelaChaves",
+        "#modalEditarChave",
+        campoEditarChave,
+        campoEditarIdChave
+    );
 
     listarDados(
         "Usuario",
-        "#campoUsuario",
         "#tabelaUsuarios",
         "#modalEditarUsuario",
         campoEditarUsuario,
-        campoEditarIdUsuario,
-        "#campoReservaUsuario"
+        campoEditarIdUsuario
     );
 
     listarDados(
         "Chave",
-        "#campoChave",
-        "#tabelaChaves",
-        "#modalEditarChave",
-        campoEditarChave,
-        campoEditarIdChave,
-        "#campoReservaChave"
-    );
-
-    listarDados(
-        "Solicitacao",
-        "",
-        "#tabelaSolicitacoes #tabBody",
-        "",
+        "#tabelaReservas",
         "",
         "",
         ""
@@ -95,174 +79,59 @@ ready(function () {
 });
 
 
-/**
- * - lista os usuários, chaves e solicitações das collections nos paineis 'Solicitações','Reserva' e 'Adicionar'
- * @param {*} _colecao 
- * @param {*} _campoPainel 
- * @param {*} _tabelaPainelAdicionar 
- * @param {*} _modal 
- * @param {*} _campoEditar 
- * @param {*} _campoEditarId 
- * @param {*} _campoReserva 
- */
-function listarDados(_colecao, _campoPainel, _tabelaPainelAdicionar, _modal,
-     _campoEditar, _campoEditarId, _campoReserva) {
 
-    let campos;
-    let valor;
+function listarDados(_colection, _tabela, _modalEditar, _campoEditar, _campoEditarId) {
 
-    _colecao == "Solicitacao" ?
-        valor = 'data' :
-        valor = 'nome';
+    let usuarios = Dao.getCollection(_colection).data;
+    let tabela = document.querySelector(_tabela);
 
-    let campoDevolucaoChave = document.querySelector('#campoDevolucaoChave');
+    usuarios.forEach(usuario => {
 
-    campos = filtrarPor(valor, _colecao);
+        if (_tabela != '#tabelaReservas') {
 
-    let campoReserva;
-    let campoPainel;
-    // listando os dados existentes no banco para o painelSolicitacao
-    if (_campoPainel != "" ) {
-
-        campoPainel = document.querySelector(_campoPainel);
-        campoReserva = document.querySelector(_campoReserva);        
-        // console.log("display: "+campoPainel.style.display);
-
-        campos.forEach(campo => {
-            let option1 = document.createElement('option');
-            let option2 = document.createElement('option');
-            option1.appendChild(document.createTextNode(campo.nome));
-            option2.appendChild(document.createTextNode(campo.nome));
-          
-            campoPainel.appendChild(option1);
-
-            // listando as chaves e usuários do banco no 'painel reservar'
-            campoReserva.appendChild(option2);
-        });
-
-    }
-
-    // listando os usuarios existentes no banco para o painelAdicionar 
-
-    let tabelaPainel = document.querySelector(_tabelaPainelAdicionar);
-    let dados = [];
-    let devolvido = "";
-    let iconeStatus;
-
-    // console.log(tabelaPainel);
-    campos.forEach(campo => {
-
-        let linha = document.createElement('tr');
-
-        if (tabelaPainel.id == "tabBody") {
-
-            campo.horarioDevolucao == null ?
-                devolvido = "" : devolvido = campo.horarioDevolucao;
-
-            iconeStatus = adicionaIcone(campo.status);
+            let linha = document.createElement('TR');
 
             dados = [
-
-                document.createTextNode(campo.data),
-                document.createTextNode(campo.labChave),
-                document.createTextNode(campo.usuario),
-                document.createTextNode(campo.horarioRetirada),
-                document.createTextNode(campo.entreguePor),
-                document.createTextNode(devolvido),
-                document.createTextNode(campo.recebidoPor),
-                iconeStatus
-
-            ];
-
-        }
-
-        if (tabelaPainel.id != "tabBody") {
-
-            dados = [
-                document.createTextNode(campo.nome),
-                document.createTextNode(campo.id),
-                botaoEditar(_modal, _campoEditar, _campoEditarId),
+                document.createTextNode(usuario.nome),
+                document.createTextNode(usuario.id),
+                botaoEditar(_modalEditar, _campoEditar, _campoEditarId),
                 botaoExcluir()
             ];
 
+            for (let index = 0; index < dados.length; index++) {
+                let col = document.createElement("TD");
+                col.appendChild(dados[index]);
+                linha.appendChild(col);
+            };
+            tabela.appendChild(linha);
+
+        } else {
+
+            let col = document.createElement("TD");
+            let elemento = document.createElement('img');
+            elemento.id = 'btnReservar';
+            elemento.src = 'assets/img/chave.jpg';
+            elemento.dataset.toggle = 'modal';
+            elemento.dataset.target = '#modalReservas';
+            elemento.style.width = '150px';
+            elemento.style.height = '150px';
+            col.textContent = usuario.nome;
+            linha.appendChild(col);
+            linha.appendChild(elemento);
+            tabela.appendChild(linha);
+
         }
 
-        for (let index = 0; index < dados.length; index++) {
 
-            let col = document.createElement("td");
-            // adicionando ícone de chave e usuário nas respectivas colunas, caso estiver preenchendo a tabela 'Solicitação'
-            let icone = document.createElement('span');
-
-            if (tabelaPainel.id == "tabBody") {
-                if (index == 1) { icone.className = "glyphicon glyphicon-tag"; }
-                if (index == 2) { icone.className = "glyphicon glyphicon-user"; }
-                col.appendChild(icone);
-            }
-            col.appendChild(dados[index]);
-            linha.appendChild(col)
-        };
-
-        //preenchendo o campo de devolução das chaves pendentes 
-        if (campo.horarioDevolucao == null && tabelaPainel.id == "tabBody") {
-            let option = document.createElement('option');
-            option.appendChild(document.createTextNode(campo.labChave));
-            campoDevolucaoChave.appendChild(option);
-        }
-
-        tabelaPainel.appendChild(linha);
 
     });
+
+
 }
 
+// <h1><a href="#" id="btnReservar" class="" data-toggle="modal" data-target="#modalReservas"
+//                     data-html="true" style="text-decoration: none"> <img src="assets/img/chave.jpg" alt="no_image"
+//                       width="150" height="150"> </a></h1>
 
-
-function adicionaIcone(_campoStatus) {
-
-    let iconeStatus = document.createElement('span');
-
-    if (_campoStatus == 'glyphicon glyphicon-remove') {
-        iconeStatus.className = "glyphicon glyphicon-remove";
-        iconeStatus.style.color = "red";
-    } else {
-        iconeStatus.className = "glyphicon glyphicon-ok";
-        iconeStatus.style.color = "green";
-    }
-
-    iconeStatus.style.fontSize = "25px";
-
-    return iconeStatus;
-}
-
-
-function filtrarPor(_valor, _colecao) {
-
-    var view = Dao.getCollection(_colecao).addDynamicView('Últimos');
-
-    if (_valor == 'data') {
-
-        view.applyFind({
-            data: {
-                '$gte': 3
-            }
-        });
-        view.applySort(function (a, b) {
-            return a.data < b.data;
-        });
-
-    } else {
-
-        view.applyFind({
-            nome: {
-                '$gte': 3
-            }
-        });
-        view.applySort(function (a, b) {
-            return a.nome < b.nome;
-        });
-
-    }
-
-    return view.data();
-}
 
 

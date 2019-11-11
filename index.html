@@ -12,11 +12,12 @@
   <link rel="stylesheet" type="text/css" href="assets/css/index.css">
   <link rel="stylesheet" href="assets/css/painelAdicionar.css">
   <link rel="stylesheet" href="assets/css/animações.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
+  <!-- bootstrap3 -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="assets/js/jquery-1.9.1.min.js"></script>
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
   <!-- script dos 'Alerts' -->
   <script src="node_modules/sweetalert/dist/sweetalert.min.js"></script>
   <title>Controle de Chaves</title>
@@ -34,23 +35,13 @@
 
   <!-- NAV TABS -->
   <ul class="nav nav-tabs" id="navTabs">
-    <!-- <div class="navbar-header">
-        <a class="navbar-brand" href="#">
-          Controle de Chaves
-          <span class="glyphicon glyphicon-tags"></span>
-        </a>
-      </div> -->
 
     <li class="active">
-      <a data-toggle="tab" href="#home" onclick="mostrarPainelSolicitacao()">Solicitações</a>
+      <a data-toggle="tab" href="#painelReserva">Reserva</a>
     </li>
 
     <li>
-      <a data-toggle="tab" href="#painelReserva" onclick="esconderPainelSolicitacao()">Reservas</a>
-    </li>
-
-    <li>
-      <a data-toggle="tab" href="#painelAdicionar" onclick="esconderPainelSolicitacao()">Adicionar</a>
+      <a data-toggle="tab" href="#painelAdicionar">Adicionar</a>
     </li>
 
     <li style="float: right;">
@@ -58,92 +49,99 @@
     </li>
 
   </ul>
+
   <!-- CONTEÚDO NAV-TAB -->
 
 
   <!-- início solicitações -->
   <div class="tab-content">
-    <!-- <div id="home" class="tab-pane fade in active"> -->
-    <div id="home" class="tab-pane fade in active">
-      <div class="form-group">
-        <!-- coluna left -->
-        <div class="col-sm-4 form-horizontal">
-          <i class="glyphicon glyphicon-tag"></i>
-          <label for="">Chave</label>
-          <select class="form-control" id="campoChave">
-          </select>
-          <span class="text-info">Informe a chave solicitada</span>
-          <div>
-            <button id="btnSolicitar" class="btn btn-warning" onclick="solicitarChave()">Solicitar</button>
-          </div>
-        </div>
-        <!-- coluna center -->
-        <div class="col-sm-4">
-        </div>
-        <!-- coluna right -->
-        <div class="col-sm-4">
-          <div class="form-group">
-            <i class="glyphicon glyphicon-user"></i>
-            <label for="">Usuário</label>
-            <select class="form-control" id="campoUsuario">
-            </select>
-            <span class="text-info">Informe o usuário que solicitou a chave</span>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- início campo devolução -->
-    <div class="content" id="camposDevolucao">
-      <div class="form-group">
-        <div class="col-sm-4">
-          <label class="control-label">Informe qual chave deseja devolver</label>
-          <select class="form-control" id="campoDevolucaoChave">
-          </select>
-          <button class="btn btn-success" onclick="devolverChave()">Devolver</button>
-        </div>
-        <div class="col-sm-4"></div>
-        <div class="col-sm-4">
-          <div class="form-group has-feedback">
-            <label class="control-label">Informe o que deseja pesquisar</label>
-            <input type="text" id="campoPesquisa" class="form-control"
-              placeholder="Data, Chave, Usuário, Horário, etc" />
-            <i class="glyphicon glyphicon-search form-control-feedback"></i>
-            <button id="btnPesquisa" class="btn btn-info" onclick="pesquisarSolicitacao()">pesquisar</button>
-          </div>
-        </div>
-      </div>
+    <!-- início RESERVA -->
+    <div class="tab-pane fade active in" id="painelReserva">
+      <div class="panel-heading lg-primary">
+        <!-- <div>
+          <button class="btn btn-info" style="position: relative;right: 75px;" data-target="#modalAdicionarReservas"
+            data-toggle="modal"><b>+</b></button>
+        </div> -->
 
-      <!-- Início 'table Solicitacoes' -->
-
-      <div class="content">
-        <div class="panel-heading lg-primary"> Solicições</div>
-        <table id="tabelaSolicitacoes" cellspacing="10" cellpadding="2" class="table table-striped">
-          <thead id="tabHead">
-            <tr>
-              <th>Data</th>
-              <th>Lab/Chave</th>
-              <th>Usuário</th>
-              <th>Horário de Retirada</th>
-              <th>Entregue por</th>
-              <th>Horário de Devolução</th>
-              <th>Recebido por</th>
-              <th>Status</th>
+        <table class="table table-hover">
+          <tbody id="tabelaReservas">
+            <!-- <tr>
+              <td>
+                <h1><a href="#" id="btnReservar" class="" data-toggle="modal" data-target="#modalReservas"
+                    data-html="true" style="text-decoration: none"> <img src="assets/img/chave.jpg" alt="no_image"
+                      width="150" height="150"> </a></h1>
+              </td>
+              <td>
+                <h1><a href="#" id="btnReservar" class="" data-toggle="modal" data-target="#modalReservas"
+                    data-html="true" style="text-decoration: none"> <img src="assets/img/chave.jpg" alt="no_image"
+                      width="150" height="150"> </a></h1>
+              </td>
+              <td>
+                <h1><a href="#" id="btnReservar" class="" data-toggle="modal" data-target="#modalReservas"
+                    data-html="true" style="text-decoration: none"> <img src="assets/img/chave.jpg" alt="no_image"
+                      width="150" height="150"> </a></h1>
+              </td>
+              <td>
+                <h1><a href="#" id="btnReservar" class="" data-toggle="modal" data-target="#modalReservas"
+                    data-html="true" style="text-decoration: none"> <img src="assets/img/chave.jpg" alt="" width="150"
+                      height="150"> </a></h1>
+              </td>
+              <td>
+                <h1><a href="#" id="btnReservar" class="glyphicon glyphicon-tags" data-toggle="modal"
+                    data-target="#modalReservas" data-html="true" style="text-decoration: none"></a></h1>
+              </td>
             </tr>
-          </thead>
-          <tbody id="tabBody"></tbody>
+            <tr>
+              <td>
+                <h1><a href="#" id="btnReservar" class="glyphicon glyphicon-tags" data-toggle="modal"
+                    data-target="#modalReservas" data-html="true" style="text-decoration: none"></a></h1>
+              </td>
+              <td>
+                <h1><a href="#" id="btnReservar" class="glyphicon glyphicon-tags" data-toggle="modal"
+                    data-target="#modalReservas" data-html="true" style="text-decoration: none"></a></h1>
+              </td>
+              <td>
+                <h1><a href="#" id="btnReservar" class="glyphicon glyphicon-tags" data-toggle="modal"
+                    data-target="#modalReservas" data-html="true" style="text-decoration: none"></a></h1>
+              </td>
+              <td>
+                <h1><a href="#" id="btnReservar" class="glyphicon glyphicon-tags" data-toggle="modal"
+                    data-target="#modalReservas" data-html="true" style="text-decoration: none"></a></h1>
+              </td>
+              <td>
+                <h1><a href="#" id="btnReservar" class="glyphicon glyphicon-tags" data-toggle="modal"
+                    data-target="#modalReservas" data-html="true" style="text-decoration: none"></a></h1>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h1><a href="#" id="btnReservar" class="glyphicon glyphicon-tags" data-toggle="modal"
+                    data-target="#modalReservas" data-html="true" style="text-decoration: none"></a></h1>
+              </td>
+              <td>
+                <h1><a href="#" id="btnReservar" class="glyphicon glyphicon-tags" data-toggle="modal"
+                    data-target="#modalReservas" data-html="true" style="text-decoration: none"></a></h1>
+              </td>
+              <td>
+                <h1><a href="#" id="btnReservar" class="glyphicon glyphicon-tags" data-toggle="modal"
+                    data-target="#modalReservas" data-html="true" style="text-decoration: none"></a></h1>
+              </td>
+              <td>
+                <h1><a href="#" id="btnReservar" class="glyphicon glyphicon-tags" data-toggle="modal"
+                    data-target="#modalReservas" data-html="true" style="text-decoration: none"></a></h1>
+              </td>
+              <td>
+                <h1><a href="#" id="btnReservar" class="glyphicon glyphicon-tags" data-toggle="modal"
+                    data-target="#modalReservas" data-html="true" style="text-decoration: none"></a></h1>
+              </td>
+            </tr> -->
+          </tbody>
         </table>
+
       </div>
-      <!-- fim 'table Solicitacoes' -->
-
     </div>
-    <!-- fim campo devolução -->
-    <!-- fim solicitações -->
-
-
-
-
-
+    <!-- fim RESERVA -->
 
     <!-- início 'Adicionar' -->
     <div class="form-group tab-pane fade" id="painelAdicionar">
@@ -206,104 +204,21 @@
 
     <!-- início 'Reserva' -->
 
-    <div class="tab-pane fade" id="painelReserva">
-      <div class="panel-heading lg-primary">
-        <!-- <div>
-          <button class="btn btn-info" style="position: relative;right: 75px;" data-target="#modalAdicionarReservas"
-            data-toggle="modal"><b>+</b></button>
-        </div> -->
+    <!-- <div class="panel panel-default">
+      <div class="panel-body">A Basic Panel</div>
+    </div> -->
 
-        <table id="tabelaReservas" class="table table-hover">
-          <thead>
-            <th>Lab / Turno</th>
-            <th>Segunda-Feira</th>
-            <th>Terça-Feira</th>
-            <th>Quarta-Feira</th>
-            <th>Quinta-Feira</th>
-            <th>Sexta-Feira</th>
 
-          </thead>
-          <tbody>
-            <tr>
-              <th>Matutino</th>
-              <td>
-                <h1><a href="#" id="btnReservar" class="glyphicon glyphicon-tags" data-toggle="modal"
-                    data-target="#modalReservas" data-html="true" style="text-decoration: none"></a></h1>
-              </td>
-              <td>
-                <h1><a href="#" id="btnReservar" class="glyphicon glyphicon-tags" data-toggle="modal"
-                    data-target="#modalReservas" data-html="true" style="text-decoration: none"></a></h1>
-              </td>
-              <td>
-                <h1><a href="#" id="btnReservar" class="glyphicon glyphicon-tags" data-toggle="modal"
-                    data-target="#modalReservas" data-html="true" style="text-decoration: none"></a></h1>
-              </td>
-              <td>
-                <h1><a href="#" id="btnReservar" class="glyphicon glyphicon-tags" data-toggle="modal"
-                    data-target="#modalReservas" data-html="true" style="text-decoration: none"></a></h1>
-              </td>
-              <td>
-                <h1><a href="#" id="btnReservar" class="glyphicon glyphicon-tags" data-toggle="modal"
-                    data-target="#modalReservas" data-html="true" style="text-decoration: none"></a></h1>
-              </td>
-            </tr>
-            <tr>
-              <th>Vespertino</th>
-              <td>
-                <h1><a href="#" id="btnReservar" class="glyphicon glyphicon-tags" data-toggle="modal"
-                    data-target="#modalReservas" data-html="true" style="text-decoration: none"></a></h1>
-              </td>
-              <td>
-                <h1><a href="#" id="btnReservar" class="glyphicon glyphicon-tags" data-toggle="modal"
-                    data-target="#modalReservas" data-html="true" style="text-decoration: none"></a></h1>
-              </td>
-              <td>
-                <h1><a href="#" id="btnReservar" class="glyphicon glyphicon-tags" data-toggle="modal"
-                    data-target="#modalReservas" data-html="true" style="text-decoration: none"></a></h1>
-              </td>
-              <td>
-                <h1><a href="#" id="btnReservar" class="glyphicon glyphicon-tags" data-toggle="modal"
-                    data-target="#modalReservas" data-html="true" style="text-decoration: none"></a></h1>
-              </td>
-              <td>
-                <h1><a href="#" id="btnReservar" class="glyphicon glyphicon-tags" data-toggle="modal"
-                    data-target="#modalReservas" data-html="true" style="text-decoration: none"></a></h1>
-              </td>
-            </tr>
-            <tr>
-              <th>Noturno</th>
-              <td>
-                <h1><a href="#" id="btnReservar" class="glyphicon glyphicon-tags" data-toggle="modal"
-                    data-target="#modalReservas" data-html="true" style="text-decoration: none"></a></h1>
-              </td>
-              <td>
-                <h1><a href="#" id="btnReservar" class="glyphicon glyphicon-tags" data-toggle="modal"
-                    data-target="#modalReservas" data-html="true" style="text-decoration: none"></a></h1>
-              </td>
-              <td>
-                <h1><a href="#" id="btnReservar" class="glyphicon glyphicon-tags" data-toggle="modal"
-                    data-target="#modalReservas" data-html="true" style="text-decoration: none"></a></h1>
-              </td>
-              <td>
-                <h1><a href="#" id="btnReservar" class="glyphicon glyphicon-tags" data-toggle="modal"
-                    data-target="#modalReservas" data-html="true" style="text-decoration: none"></a></h1>
-              </td>
-              <td>
-                <h1><a href="#" id="btnReservar" class="glyphicon glyphicon-tags" data-toggle="modal"
-                    data-target="#modalReservas" data-html="true" style="text-decoration: none"></a></h1>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-      </div>
-    </div>
     <!-- fim 'Reserva' -->
 
-    <footer id="rodape" class="container-fluid text-center">
-      <p>&copy Desenvolvido por Douglas Feliphe</p>
-    </footer>
+
   </div>
+
+  <footer id="rodape" class="container-fluid text-center">
+    <p>&copy Desenvolvido por Douglas Feliphe</p>
+  </footer>
+
+
 
 
   <!-- FIM TABLE-CONTENT -->
