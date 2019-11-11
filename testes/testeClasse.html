@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <title></title>
+        <link rel="stylesheet" href="MainStyleSheet.css" type="text/css" />
+     
+        <script language="javascript" type="text/javascript" src="ListButtonJScript.js"></script>
+        <script language="javascript" type="text/javascript">
+            var oListButton1;
+            var oListButton2;
+ 
+            function document_OnLoad() {               
+                var widthList = '146px';
+                 
+                if (window.ActiveXObject) {//The ActiveXObject object is used to create instances of OLE Automation objects in Internet Explorer on Windows operating systems.
+                    widthList = '150px';
+                }
+ 
+                oListButton1 = new listButton('oListButton1', 'File', '150px', '40px', widthList, '250px');
+                oListButton1.OnSelectedIndexChanged = oListButton1_SelectedIndexChanged;
+ 
+                oListButton1.addItem('Item 1', '1');
+                oListButton1.addItem('Item 2', '2');
+                oListButton1.addItem('Item 3', '3');
+ 
+                oListButton1.createButton(document.getElementById('recipient1'));
+ 
+                oListButton2 = new listButton('oListButton2', 'Edit', '150px', '40px', widthList, '250px');
+                oListButton2.OnSelectedIndexChanged = oListButton2_SelectedIndexChanged;
+ 
+                oListButton2.addItem('Item 4', '1');
+                oListButton2.addItem('Item 5', '2');
+                oListButton2.addItem('Item 6', '3');
+ 
+                oListButton2.createButton(document.getElementById('recipient2'));
+            }
+ 
+            function oListButton1_SelectedIndexChanged(oItemListButton) {
+                document.getElementById('itemLabel').innerHTML = oItemListButton.text;
+            }
+ 
+            function oListButton2_SelectedIndexChanged(oItemListButton) {
+                document.getElementById('itemLabel').innerHTML = oItemListButton.text;
+            }
+ 
+        </script>
+    </head>
+    <body onload="document_OnLoad();">
+        <table cellpadding="0" cellspacing="0" border="0">
+            <tr>
+                <td align="center" colspan="3">
+                    <label id="itemLabel" style="color:Blue;font-family:Segoe UI, Tahoma, Sans-Serif;font-size:14pt;font-weight:bold;"> </label>
+                </td>
+            </tr>
+            <tr>
+                <td id="recipient1">
+             
+                </td>
+                <td>
+                      
+                </td>
+                <td id="recipient2">
+             
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

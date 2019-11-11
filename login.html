@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <title>Login</title>
+    <script>
+        const { remote } = require('electron');
+    </script>
+</head>
+
+<body>
+    <!-- <center>
+        <h1>Login</h1>
+        <div>
+            <input type="text">
+            <div>
+                <input type="password">
+            </div>
+            <div>
+                <button onclick="remote.getCurrentWindow().close()">Fechar</button>
+            </div>
+        </div>
+    </center> -->
+        <form class="text-center">
+            <!-- <div class="imgcontainer">
+                <img src="images/profile-placeholder.png" alt="Avatar" class="avatar" width="225px" height="225px">
+            </div> -->
+            <div class="form-group">
+                <label for="email">Email address:</label>
+                <input type="email" class="form-control" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="pwd">Password:</label>
+                <input type="password" class="form-control" id="pwd" required>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox"> Remember me</label>
+            </div>
+            <button type="submit" class="btn btn-default" onclick="remote.getCurrentWindow().close()">Submit</button>
+        </form>
+</body>
+
+</html>

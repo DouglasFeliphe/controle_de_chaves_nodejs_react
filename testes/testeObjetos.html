@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script language="javascript" type="text/javascript">
+
+        // factory function
+        // const proto = {
+        //     modelo: "GOL",
+        //     drive() {
+        //         alert('Vroom!');
+        //     },
+        //     getModelo() {
+        //         alert('modelo: ' + modelo);
+        //     }
+        // };
+
+        // function factoryCar() {
+        //     return Object.create(proto);
+        // }
+
+        // const car3 = factoryCar();
+        // car3.getModelo();
+        
+        var Animal = {
+            tipo: "Invertebrados", // Propriedades de valores padrão
+            qualTipo: function () {  // Método que ira mostrar o tipo de Animal
+                console.log(this.tipo);
+            }
+        }
+
+        // Cria um novo tipo de animal chamado animal1
+        var animal1 = Object.create(Animal);
+        animal1.qualTipo(); // Saída: Invertebrados
+
+        // Cria um novo tipo de animal chamado Peixes
+        var peixe = Object.create(Animal);
+        peixe.tipo = "Peixes";
+        peixe.qualTipo(); // Saída: Peixes
+
+
+
+        // function como classe
+
+        // function Person() {
+        //     var eyeColor = "grey";
+        //     this.getEyeColor = function () {
+        //         return eyeColor;
+        //     }
+        // }
+
+        // function Worker() {
+        //     var work = "mecanic";
+        //     this.getWork = () => work;
+        // }
+
+
+        //    Worker.prototype = new Person();
+        //     pai = new Worker();
+        //     alert("pai: "+pai.getEyeColor()+"\n"+
+        //           "função: "+pai.getWork());
+
+        
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

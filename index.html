@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link rel="stylesheet" type="text/css" href="assets/css/index.css">
+  <link rel="stylesheet" href="assets/css/painelAdicionar.css">
+  <link rel="stylesheet" href="assets/css/animações.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/index.css">
+  <link rel="stylesheet" href="assets/css/painelAdicionar.css">
+  <link rel="stylesheet" href="assets/css/animações.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <script src="assets/js/jquery-1.9.1.min.js"></script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- script dos 'Alerts' -->
+  <script src="node_modules/sweetalert/dist/sweetalert.min.js"></script>
+  <title>Controle de Chaves</title>
+</head>
+
+<body>
+
+  <div style="display: flex;justify-content: center;
+        padding: 25px;margin-bottom: 15px;font-size: 29px;color: black">
+    Controle de Chaves
+    <span class="glyphicon glyphicon-tags"> </span>
+  </div>
+
+  <button class="btn btn-danger" style="float: right;margin-top: 5px;" onclick="sair()">X</button>
+
+  <!-- NAV TABS -->
+  <ul class="nav nav-tabs" id="navTabs">
+    <!-- <div class="navbar-header">
+        <a class="navbar-brand" href="#">
+          Controle de Chaves
+          <span class="glyphicon glyphicon-tags"></span>
+        </a>
+      </div> -->
+
+    <li class="active">
+      <a data-toggle="tab" href="#home" onclick="mostrarPainelSolicitacao()">Solicitações</a>
+    </li>
+
+    <li>
+      <a data-toggle="tab" href="#painelReserva" onclick="esconderPainelSolicitacao()">Reservas</a>
+    </li>
+
+    <li>
+      <a data-toggle="tab" href="#painelAdicionar" onclick="esconderPainelSolicitacao()">Adicionar</a>
+    </li>
+
+    <li style="float: right;">
+      <i class="btn glyphicon glyphicon-user" data-toggle="modal" data-target="#modalLoginFuncionario"></i>
+    </li>
+
+  </ul>
+  <!-- CONTEÚDO NAV-TAB -->
+
+
+  <!-- início solicitações -->
+  <div class="tab-content">
+    <!-- <div id="home" class="tab-pane fade in active"> -->
+    <div id="home" class="tab-pane fade in active">
+      <div class="form-group">
+        <!-- coluna left -->
+        <div class="col-sm-4 form-horizontal">
+          <i class="glyphicon glyphicon-tag"></i>
+          <label for="">Chave</label>
+          <select class="form-control" id="campoChave">
+          </select>
+          <span class="text-info">Informe a chave solicitada</span>
+          <div>
+            <button id="btnSolicitar" class="btn btn-warning" onclick="solicitarChave()">Solicitar</button>
+          </div>
+        </div>
+        <!-- coluna center -->
+        <div class="col-sm-4">
+        </div>
+        <!-- coluna right -->
+        <div class="col-sm-4">
+          <div class="form-group">
+            <i class="glyphicon glyphicon-user"></i>
+            <label for="">Usuário</label>
+            <select class="form-control" id="campoUsuario">
+            </select>
+            <span class="text-info">Informe o usuário que solicitou a chave</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- início campo devolução -->
+    <div class="content" id="camposDevolucao">
+      <div class="form-group">
+        <div class="col-sm-4">
+          <label class="control-label">Informe qual chave deseja devolver</label>
+          <select class="form-control" id="campoDevolucaoChave">
+          </select>
+          <button class="btn btn-success" onclick="devolverChave()">Devolver</button>
+        </div>
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+          <div class="form-group has-feedback">
+            <label class="control-label">Informe o que deseja pesquisar</label>
+            <input type="text" id="campoPesquisa" class="form-control"
+              placeholder="Data, Chave, Usuário, Horário, etc" />
+            <i class="glyphicon glyphicon-search form-control-feedback"></i>
+            <button id="btnPesquisa" class="btn btn-info" onclick="pesquisarSolicitacao()">pesquisar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Início 'table Solicitacoes' -->
+
+      <div class="content">
+        <div class="panel-heading lg-primary"> Solicições</div>
+        <table id="tabelaSolicitacoes" cellspacing="10" cellpadding="2" class="table table-striped">
+          <thead id="tabHead">
+            <tr>
+              <th>Data</th>
+              <th>Lab/Chave</th>
+              <th>Usuário</th>
+              <th>Horário de Retirada</th>
+              <th>Entregue por</th>
+              <th>Horário de Devolução</th>
+              <th>Recebido por</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="tabBody"></tbody>
+        </table>
+      </div>
+      <!-- fim 'table Solicitacoes' -->
+
+    </div>
+    <!-- fim campo devolução -->
+    <!-- fim solicitações -->
+
+
+
+
+
+
+    <!-- início 'Adicionar' -->
+    <div class="form-group tab-pane fade" id="painelAdicionar">
+
+      <!-- inicio table usuários-->
+      <div class="col-sm-6 ">
+        <div class="container-fluid">
+          <div>
+            <p>
+              <h2> <span class="glyphicon glyphicon-user"></span> Usuários</h2>
+            </p>
+            <p>
+              <button class="btn btn-info" data-toggle="modal"
+                data-target="#modalNovoUsuario"><strong>+</strong></button>
+            </p>
+          </div>
+
+          <table class="table table-hover colunaDados">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Nº Matrícula/CPF</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="tabelaUsuarios">
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- fim table usuários -->
+
+      <!-- início table chaves -->
+      <div class="col-sm-6 ">
+        <div class="container-fluid">
+          <h2> <span class="glyphicon glyphicon-tag"></span> Chaves</h2>
+          <p>
+            <button class="btn btn-info" data-toggle="modal" data-target="#modalNovaChave"><strong>+</strong></button>
+          </p>
+          <table class="table table-hover colunaDados">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Número</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="tabelaChaves">
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- fim table chaves -->
+    </div>
+    <!-- fim 'Adicionar' -->
+
+
+    <!-- início 'Reserva' -->
+
+    <div class="tab-pane fade" id="painelReserva">
+      <div class="panel-heading lg-primary">
+        <!-- <div>
+          <button class="btn btn-info" style="position: relative;right: 75px;" data-target="#modalAdicionarReservas"
+            data-toggle="modal"><b>+</b></button>
+        </div> -->
+
+        <table id="tabelaReservas" class="table table-hover">
+          <thead>
+            <th>Lab / Turno</th>
+            <th>Segunda-Feira</th>
+            <th>Terça-Feira</th>
+            <th>Quarta-Feira</th>
+            <th>Quinta-Feira</th>
+            <th>Sexta-Feira</th>
+
+          </thead>
+          <tbody>
+            <tr>
+              <th>Matutino</th>
+              <td>
+                <h1><a href="#" id="btnReservar" class="glyphicon glyphicon-tags" data-toggle="modal"
+                    data-target="#modalReservas" data-html="true" style="text-decoration: none"></a></h1>
+              </td>
+              <td>
+                <h1><a href="#" id="btnReservar" class="glyphicon glyphicon-tags" data-toggle="modal"
+                    data-target="#modalReservas" data-html="true" style="text-decoration: none"></a></h1>
+              </td>
+              <td>
+                <h1><a href="#" id="btnReservar" class="glyphicon glyphicon-tags" data-toggle="modal"
+                    data-target="#modalReservas" data-html="true" style="text-decoration: none"></a></h1>
+              </td>
+              <td>
+                <h1><a href="#" id="btnReservar" class="glyphicon glyphicon-tags" data-toggle="modal"
+                    data-target="#modalReservas" data-html="true" style="text-decoration: none"></a></h1>
+              </td>
+              <td>
+                <h1><a href="#" id="btnReservar" class="glyphicon glyphicon-tags" data-toggle="modal"
+                    data-target="#modalReservas" data-html="true" style="text-decoration: none"></a></h1>
+              </td>
+            </tr>
+            <tr>
+              <th>Vespertino</th>
+              <td>
+                <h1><a href="#" id="btnReservar" class="glyphicon glyphicon-tags" data-toggle="modal"
+                    data-target="#modalReservas" data-html="true" style="text-decoration: none"></a></h1>
+              </td>
+              <td>
+                <h1><a href="#" id="btnReservar" class="glyphicon glyphicon-tags" data-toggle="modal"
+                    data-target="#modalReservas" data-html="true" style="text-decoration: none"></a></h1>
+              </td>
+              <td>
+                <h1><a href="#" id="btnReservar" class="glyphicon glyphicon-tags" data-toggle="modal"
+                    data-target="#modalReservas" data-html="true" style="text-decoration: none"></a></h1>
+              </td>
+              <td>
+                <h1><a href="#" id="btnReservar" class="glyphicon glyphicon-tags" data-toggle="modal"
+                    data-target="#modalReservas" data-html="true" style="text-decoration: none"></a></h1>
+              </td>
+              <td>
+                <h1><a href="#" id="btnReservar" class="glyphicon glyphicon-tags" data-toggle="modal"
+                    data-target="#modalReservas" data-html="true" style="text-decoration: none"></a></h1>
+              </td>
+            </tr>
+            <tr>
+              <th>Noturno</th>
+              <td>
+                <h1><a href="#" id="btnReservar" class="glyphicon glyphicon-tags" data-toggle="modal"
+                    data-target="#modalReservas" data-html="true" style="text-decoration: none"></a></h1>
+              </td>
+              <td>
+                <h1><a href="#" id="btnReservar" class="glyphicon glyphicon-tags" data-toggle="modal"
+                    data-target="#modalReservas" data-html="true" style="text-decoration: none"></a></h1>
+              </td>
+              <td>
+                <h1><a href="#" id="btnReservar" class="glyphicon glyphicon-tags" data-toggle="modal"
+                    data-target="#modalReservas" data-html="true" style="text-decoration: none"></a></h1>
+              </td>
+              <td>
+                <h1><a href="#" id="btnReservar" class="glyphicon glyphicon-tags" data-toggle="modal"
+                    data-target="#modalReservas" data-html="true" style="text-decoration: none"></a></h1>
+              </td>
+              <td>
+                <h1><a href="#" id="btnReservar" class="glyphicon glyphicon-tags" data-toggle="modal"
+                    data-target="#modalReservas" data-html="true" style="text-decoration: none"></a></h1>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+    <!-- fim 'Reserva' -->
+
+    <footer id="rodape" class="container-fluid text-center">
+      <p>&copy Desenvolvido por Douglas Feliphe</p>
+    </footer>
+  </div>
+
+
+  <!-- FIM TABLE-CONTENT -->
+  <!-- </div> -->
+
+
+
+
+  <!-- início #modalLoginFuncionario -->
+  <!-- <div class="modal fade" id="modalLoginFuncionario" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content text-center">
+        <div class="modal-header">
+          <h4 class="modal-title">Funcionário</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="">Login</label>
+            <input type="text" class="form-control" placeholder="">
+            <br>
+            <label for="">Senha</label>
+            <input type="password" class="form-control" placeholder="">
+          </div>
+        </div>
+        <div class="modal-footer text-center">
+          <button class="btn btn-primary" onclick="" data-toggle="modal" data-target="#modalCadastrarFuncionario">Novo Funcionário</button>
+          <button class="btn btn-success" onclick="logar()" data-dismiss="modal">Entrar</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <!-- fim #modalLoginFuncionario -->
+  <!-- início #modalCadastrarFuncionario -->
+  <div id="modalCadastrarFuncionario" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h3 class="modal-title">Cadastro de Funcionário</h3>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="nome">Nome</label>
+              <input type="text" class="form-control" id="nomeFuncionario" required>
+            </div>
+            <div class="form-group">
+              <label for="sobrenome">Sobrenome</label>
+              <input type="text" id="sobrenomeFuncionario" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" class="form-control" id="emailFuncionario" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Confirmar Email:</label>
+              <input type="email" class="form-control" id="confirmarEmailFuncionario" required>
+            </div>
+            <div class="form-group">
+              <label for="pwd">Senha:</label>
+              <input type="password" class="form-control" id="senhaFuncionario" required>
+            </div>
+            <div class="form-group">
+              <label for="pwd">Confirmar Senha:</label>
+              <input type="password" class="form-control" id="confirmarSenhaFuncionario" required>
+            </div>
+            <!-- <button type="submit" class="btn btn-success" onclick="criarCadastroFuncionario()">Criar Cadastro</button>
+              <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button> -->
+
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success" onclick="criarCadastroFuncionario()" data-dismiss="modal">Criar
+            Cadastro</button>
+          <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- fim #modalCadastrarFuncionario -->
+
+
+  <!-- início #modalNovoUsuario -->
+  <div class="modal fade" id="modalNovoUsuario" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content text-center">
+        <div class="modal-header">
+          <h4 class="modal-title">Novo Usuário</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="">Nome</label>
+            <input maxlength="21" id="campoNovoUsuario" type="text" class="form-control" required>
+            <br>
+            <label for="">N° Matrícula/CPF</label>
+            <input maxlength="16" id="campoIdUsuario" type="text" class="form-control" required>
+          </div>
+        </div>
+        <div class="modal-footer text-center">
+          <button class="btn btn-success" data-dismiss="modal" onclick="adicionarNovosDados(this)">Criar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- fim #modalNovoUsuario -->
+  <!-- início #modalEditarUsuario -->
+  <div class="modal fade" id="modalEditarUsuario" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content text-center">
+        <div class="modal-header">
+          <h4 class="modal-title">Editar Usuário</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="">Nome</label>
+            <input maxlength="21" id="campoEditarUsuario" type="text" class="form-control" required>
+            <br>
+            <label for="">N° Matrícula/CPF</label>
+            <input maxlength="16" id="campoEditarIdUsuario" type="text" class="form-control" required>
+          </div>
+        </div>
+        <div class="modal-footer text-center">
+          <button class="btn btn-primary" data-dismiss="modal" onclick="alterarDados(this)">Alterar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- fim #modalEditarUsuario -->
+
+  <!-- início #modalNovaChave -->
+  <div class="modal fade" id="modalNovaChave" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content text-center">
+        <div class="modal-header">
+          <h4 class="modal-title">Nova Chave</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="">Nome</label>
+            <input id="campoNomeNovaChave" maxlength="21" type="text" class="form-control">
+            <br>
+            <label for="">Número</label>
+            <input id="campoIdNovaChave" maxlength="7" type="number" class="form-control">
+          </div>
+        </div>
+        <div class="modal-footer text-center">
+          <button class="btn btn-success" data-dismiss="modal" onclick="adicionarNovosDados(this)">Criar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- fim #modalNovaChave -->
+  <!-- início #modalEditarChave-->
+  <div class="modal fade" id="modalEditarChave" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content text-center">
+        <div class="modal-header">
+          <h4 class="modal-title">Editar Chave</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="">Nome</label>
+            <input maxlength="21" id="campoEditarChave" type="text" class="form-control" required>
+            <br>
+            <label for="">Número </label>
+            <input maxlength="7" id="campoEditarIdChave" type="text" class="form-control" required>
+          </div>
+        </div>
+        <div class="modal-footer text-center">
+          <button class="btn btn-default" data-dismiss="modal" onclick="alterarDados(this)">Alterar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- fim #modalEditarChave -->
+
+  <!-- início #modalReservas -->
+  <div class="modal fade" id="modalReservas" role="dialog">
+    <div class="modal-dialog">
+      <!-- modal content -->
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+
+        <div class="modal-body">
+
+          <div class="form-group">
+
+            <i class="glyphicon glyphicon-user"></i>
+            <label for="">Usuário</label>
+            <select class="form-control" id="campoReservaUsuario">
+            </select>
+            <br>
+
+            <i class="glyphicon glyphicon-tag"></i>
+            <label for="">Chave</label>
+            <select class="form-control" id="campoReservaChave">
+            </select>
+            <br>
+
+            <i class="glyphicon glyphicon-clockwork"></i>
+            <label for="">Horário Início</label>
+            <select class="form-control" id="campoReservaHorarioInicio">
+              <option value="8:00">8:00</option>
+              <option value="9:00">9:00</option>
+              <option value="10:00">10:00</option>
+              <option value="11:00">11:00</option>
+            </select>
+            <br>
+
+            <label for="">Horário Fim</label>
+            <select class="form-control" id="campoReservaHorarioFim">
+              <option value="9:00">9:00</option>
+              <option value="10:00">10:00</option>
+              <option value="11:00">11:00</option>
+              <option value="12:00">12:00</option>
+            </select>
+            <br>
+
+          </div>
+
+          <div class="modal-footer">
+            <button id="btnModalReservar" class="btn btn-info" data-dismiss="modal">Reservar</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- fim #modalReservas -->
+
+</body>
+
+<script>
+  require('./renderer.js');  
+</script>
+
+<script src="assets/js/painelReserva.js"></script>
+<script src="assets/js/index.js"></script>
+<script src="assets/js/painelAdicionar.js"></script>
+<script src="assets/js/funcionario.js"></script>
+
+</html>
