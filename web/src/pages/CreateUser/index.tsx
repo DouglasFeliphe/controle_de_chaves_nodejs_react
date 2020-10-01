@@ -7,7 +7,7 @@ const CreateUser: React.FC = () => {
         title='Novo Usuário'
         onSubmit={() => { }}
         body={
-            <form onSubmit={() => { }} >
+            <>
                 <div className="form-group">
                     <label htmlFor="email">Nome do Usuário:</label>
                     <input type="email" className="form-control" />
@@ -16,7 +16,7 @@ const CreateUser: React.FC = () => {
                     <label htmlFor="pwd">N° Identificação:</label>
                     <input type="password" className="form-control" />
                 </div>
-            </form>
+            </>
         }
         confirmButtonText='Salvar'
     />

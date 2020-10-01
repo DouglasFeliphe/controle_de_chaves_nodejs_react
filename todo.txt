@@ -3,3 +3,19 @@
         Delivered at 
         Returned at
      - inserção única - unique
+
+     
+#front-end
+   [x] listar chave
+   [] deletar chave
+   [] editar chave
+   [] nova chave
+
+   [] listar usuário
+   [] deletar usuário
+   [] editar usuário
+   [] novo usuário
+
+ERROS
+   "Encountered two children with the same key, `1`"
+   SOLUÇÃO: deletar chave com ID duplicado

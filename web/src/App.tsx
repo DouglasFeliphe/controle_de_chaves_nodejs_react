@@ -69,87 +69,105 @@ function App() {
         </form>
       </nav>
 
-      <main role="main" className="container">
-        {/* BOTÕES */}
-        <div className="row">
-          <div className="col-lg-12 d-flex justify-content-between">
-            <button id="btn-adicionar" className="btn btn-success btn-rounded p-10" data-toggle="modal" data-target="#modal-create-key" ><b>+</b>
-            Nova Chave
-            </button>
-            <button id="btn-adicionar" className="btn btn-success btn-rounded" data-toggle="modal" data-target="#modal-create-user" ><b>+</b>
-              Novo Usuário
-              </button>
-          </div>
-        </div>
-        {/* CHAVES */}
-        <div className="my-3 p-3 bg-white rounded shadow-sm ">
-          <h6 className="border-bottom border-gray pb-2 mb-0">  </h6>
+      <div className="row">
+        <aside className='col-sm-2 d-flex flex-column align-items-center'>
+          {/* BOTÕES */}
+          <button
+            id="btn-nova-chave"
+            className="btn btn-info rounded-circle"
+            data-toggle="modal"
+            data-target="#modal-create-key" >
+            <i className="fas fa-plus"></i>
+            Nova
+            <br />
+             Chave
+          </button>
+          <button
+            id="btn-novo-usuario"
+            className="btn btn-info rounded-circle"
+            data-toggle="modal"
+            data-target="#modal-create-user"
+          >
+            <i className="fas fa-plus"></i>
+            Novo
+            <br />
+            Usuário
+          </button>
+        </aside>
 
-          <div className='row'>
-            <div className="col-lg-12"></div>
-            {keys.map(key => (
-              <div className="col-lg-4 text-center" key={key.number}>
-                < img key={key.number}
-                  src={ImgChave}
-                  className="img-chave"
-                  data-toggle="modal"
-                  data-target={'#modal-0' + key.number}
-                />
-                <h5>{key.name}</h5>
-                <strong>{key.number}</strong>
-                <br />
-                <button className='btn btn-warning btn-rounded' data-toggle="modal" data-target="#modal-create-reservation">Reservar</button>
-                {/* <ShowKey
+        <main role="main" className="container col-sm-8">
+          {/* CHAVES */}
+          <div className="my-3 p-3 bg-white rounded shadow-sm ">
+            <h6 className="border-bottom border-gray pb-2 mb-0">  </h6>
+
+            <div className='row'>
+              <div className="col-lg-12"></div>
+              {keys.map(key => (
+                <div key={key.number} className="col-lg-4 text-center">
+
+                  <img
+                    src={ImgChave}
+                    className="img-chave"
+                    data-toggle="modal"
+                    data-target={'#modal-0' + key.number}
+                  />
+                  <button className="fas fa-times"></button>
+                  <h5>{key.name}</h5>
+                  <strong>{key.number}</strong>
+                  <br />
+                  <button className='btn btn-warning btn-rounded' data-toggle="modal" data-target="#modal-create-reservation">Reservar</button>
+                  {/* <ShowKey
                   id={'modal-0' + key.number}
                   key_name={key.name} /> */}
-              </div>
-            ))}
+                </div>
+              ))}
+            </div>
+
           </div>
 
-        </div>
+          {/* MODALS */}
+          <CreateKey />
+          <CreateUser />
+          <CreateReservation
+            users={users}
+          />
 
-
-
-        <CreateKey />
-        <CreateUser />
-        <CreateReservation
-          users={users}
-        />
-
-        <div className="my-3 p-3 bg-white rounded shadow-sm">
-          <h6 className="border-bottom border-gray pb-2 mb-0">Ùltimas Reservas</h6>
-          <table className="table table-striped">
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>User name</th>
-                <th>Key name</th>
-                <th>Key number</th>
-                <th>Delivered at</th>
-                <th>Returned at</th>
-              </tr>
-            </thead>
-            <tbody>
-              {reservations?.map(reservation => (
-                <tr key={reservation.id}>
-                  <td>{reservation.date}</td>
-                  <td>{reservation.user_name}</td>
-                  <td>{reservation.key_name}</td>
-                  <td>{reservation.key_number}</td>
-                  <td>{reservation.delivered_at}</td>
-                  <td>{reservation.returned_at}</td>
-                  <td>{reservation.status}</td>
+          <div className="my-3 p-3 bg-white rounded shadow-sm">
+            <h6 className="border-bottom border-gray pb-2 mb-0">Ùltimas Reservas</h6>
+            <table className="table table-striped">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>User name</th>
+                  <th>Key name</th>
+                  <th>Key number</th>
+                  <th>Delivered at</th>
+                  <th>Returned at</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {reservations?.map(reservation => (
+                  <tr key={reservation.id}>
+                    <td>{reservation.date}</td>
+                    <td>{reservation.user_name}</td>
+                    <td>{reservation.key_name}</td>
+                    <td>{reservation.key_number}</td>
+                    <td>{reservation.delivered_at}</td>
+                    <td>{reservation.returned_at}</td>
+                    <td>{reservation.status}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
 
 
 
-        </div>
-      </main>
+          </div>
+        </main>
+        <aside className="col-sm-2">
+        </aside>
+      </div>
     </>
-
   );
 }
 
