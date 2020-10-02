@@ -3,7 +3,7 @@ Sistema de controle de chaves utilizando <a href='https://pt-br.reactjs.org/'>Re
 
 ![Alt text](home.png?raw=true "Optional Title")
 
-## Comandos
+## Inicialização
 para rodar o servidor da aplicação:
 <ul>  
   <li>Entre na pasta: 'DjangoRestFramewordk_teste'</li>
@@ -12,6 +12,6 @@ para rodar o servidor da aplicação:
 
 para inicializar a interface da aplicação:
 <ul>
-  <li>Entre na pasta 'Web'</li>
+  <li>Entre na pasta 'web'</li>
   <li>Rode o comando: <code>npm start</code></li>
   <ul>
