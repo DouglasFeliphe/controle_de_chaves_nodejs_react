@@ -1,7 +1,7 @@
 // Update with your config settings.
 import path from 'path';
 
-export default {
+module.exports = {
 
   development: {
     client: 'sqlite3',
