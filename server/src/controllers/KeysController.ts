@@ -14,7 +14,7 @@ class KeysController {
     }
 
     async create() {
-        
+
     }
 
     async update() {
