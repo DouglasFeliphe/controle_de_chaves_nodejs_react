@@ -9,11 +9,11 @@ class KeysController {
         return response.json({ keys })
     }
 
-    async create() {
+    async show() {
 
     }
 
-    async show() {
+    async create() {
 
     }
 
