@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ModalScreen from '../../components/ModalScreen';
-import { Interface } from 'readline';
 
 interface CreateReservationProps {
     // date: string

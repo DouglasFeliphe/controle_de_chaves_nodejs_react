@@ -1,4 +1,4 @@
-import React, { ComponentType, Component, ReactNode, FormEvent } from 'react';
+import React, { ReactNode } from 'react';
 
 interface ModalProps {
     id: string
@@ -13,7 +13,7 @@ const ModalScreen = (props: ModalProps) => {
         <div className="modal fade" id={props.id} >
             <div className="modal-dialog modal-dialog-centered">
                 <div className="modal-content">
-                    <form onSubmit={e => props.onSubmit(e)}>
+                    <form onSubmit={event => props.onSubmit(event)}>
                         <div className="modal-header">
                             <h4 className="modal-title">{props.title}</h4>
                             <button type="button" className="close" data-dismiss="modal">&times;</button>

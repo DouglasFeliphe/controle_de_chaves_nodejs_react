@@ -1,4 +1,4 @@
-import React, { useState, Component, FormEvent } from 'react';
+import React, { useState, FormEvent } from 'react';
 import ModalScreen from '../../components/ModalScreen';
 import api from '../../services/api';
 
@@ -6,9 +6,10 @@ const CreateKey: React.FC = () => {
 
     const [name, setName] = useState('');
     const [number, setNumber] = useState(0);
-    const [formEvent, setFormEvent] = useState<FormEvent>();
+    // const [formEvent, setFormEvent] = useState<FormEvent>();
 
-    async function handleCreateKey(event: FormEvent) {
+    function handleCreateKey(event: FormEvent) {
+        console.log('ok');
         event.preventDefault()
 
         const data = {
@@ -16,9 +17,10 @@ const CreateKey: React.FC = () => {
             number
         }
 
+        console.log('data :>> ', data);
         try {
-            await api.post('keys/', data)
-
+            api.post('keys/', data)
+            alert('Chave criada com sucesso.')
         } catch (error) {
             alert('Erro ao criar nova chave, tente novamente.');
         }
@@ -27,10 +29,11 @@ const CreateKey: React.FC = () => {
     return <ModalScreen
         id='modal-create-key'
         title='Nova Chave'
-        onSubmit={(event: FormEvent) => handleCreateKey(event)}
+        // onSubmit={(event: FormEvent) => handleCreateKey(event)}
+        onSubmit={(e: FormEvent) => handleCreateKey(e)}
         body={
             <>
-                <div className="form-group" onSubmit={e => handleCreateKey(e)}>
+                <div className="form-group" >
                     <label htmlFor="email">Nome da Chave:</label>
                     <input
                         className="form-control"

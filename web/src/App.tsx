@@ -54,8 +54,20 @@ function App() {
     })
   }, []);
 
-  function handleKeyClick() {
-    // alert('ok')
+  // function handleKeyClick() {
+  //   alert('ok')
+  // }
+
+  async function handleDeleteKey(_keyNumber: number) {
+
+    try {
+      await api.delete(`keys/${_keyNumber}/`)
+      alert(`Chave ${_keyNumber} deletada com sucesso.`)
+
+    } catch (error) {
+      alert('Erro ao deletar chave, tente novamente.')
+
+    }
   }
 
   return (
@@ -104,21 +116,18 @@ function App() {
               <div className="col-lg-12"></div>
               {keys.map(key => (
                 <div key={key.number} className="col-lg-4 text-center">
-
                   <img
                     src={ImgChave}
                     className="img-chave"
                     data-toggle="modal"
                     data-target={'#modal-0' + key.number}
+                    alt='no_image'
                   />
-                  <button className="fas fa-times"></button>
+                  <button onClick={() => handleDeleteKey(key.number)} className="fas fa-times"></button>
                   <h5>{key.name}</h5>
                   <strong>{key.number}</strong>
                   <br />
                   <button className='btn btn-warning btn-rounded' data-toggle="modal" data-target="#modal-create-reservation">Reservar</button>
-                  {/* <ShowKey
-                  id={'modal-0' + key.number}
-                  key_name={key.name} /> */}
                 </div>
               ))}
             </div>
@@ -160,12 +169,12 @@ function App() {
               </tbody>
             </table>
 
-
-
           </div>
         </main>
+
         <aside className="col-sm-2">
         </aside>
+
       </div>
     </>
   );

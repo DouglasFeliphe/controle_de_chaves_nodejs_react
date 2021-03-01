@@ -1,9 +1,9 @@
-# backend 
+﻿# backend 
      - colocar como opcional
         Delivered at 
         Returned at
      - inserção única - unique
-
+     - se a chave estiver emprestada, mudar a cor da imagem
      
 #front-end
    [x] listar chave
@@ -17,5 +17,7 @@
    [] novo usuário
 
 ERROS
-   "Encountered two children with the same key, `1`"
-   SOLUÇÃO: deletar chave com ID duplicado
+   botao nao funciona
+   limpar cache
+
+
