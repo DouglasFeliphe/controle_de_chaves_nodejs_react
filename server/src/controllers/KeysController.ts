@@ -16,14 +16,19 @@ class KeysController {
             .select()
             .where('keys.number', number)
 
-        if (!key) {
-            return response.status(400).json({ error: 'key not found.' })
-        }
-
         return response.json({ key })
     }
 
-    async create() {
+    async create(request: Request, response: Response) {
+
+        const { number, name } = request.body
+
+        const key = await connection('keys').insert({
+            number,
+            name
+        })
+
+        return response.send({ message: 'key created!', key: key })
 
     }
 
