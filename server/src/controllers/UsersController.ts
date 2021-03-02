@@ -7,8 +7,7 @@ class UsersController {
 
         try {
 
-            const users = await connection('users')
-                .select('*')
+            const users = await connection('users').select('*')
 
             if (!users) {
                 return response.status(404).json({ message: '0 results returned.' })
@@ -22,7 +21,6 @@ class UsersController {
     }
 
     show(request: Request, response: Response) {
-
     }
 
     create() {
@@ -32,4 +30,10 @@ class UsersController {
     update() {
 
     }
+
+    delete() {
+
+    }
 }
+
+export default UsersController
