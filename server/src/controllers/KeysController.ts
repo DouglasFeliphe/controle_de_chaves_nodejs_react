@@ -9,8 +9,18 @@ class KeysController {
         return response.json({ keys })
     }
 
-    async show() {
+    async show(request: Request, response: Response) {
+        const { number } = request.params
 
+        const key = await connection('keys')
+            .select()
+            .where('keys.number', number)
+
+        if (!key) {
+            return response.status(400).json({ error: 'key not found.' })
+        }
+
+        return response.json({ key })
     }
 
     async create() {
