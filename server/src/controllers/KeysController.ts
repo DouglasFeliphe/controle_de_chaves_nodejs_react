@@ -9,7 +9,7 @@ class KeysController {
             const keys = await connection('keys').select('*')
 
             if (!keys) {
-                return response.status(400).json({ error: 'return 0 results for keys.' })
+                return response.status(404).json({ error: 'return 0 results for keys.' })
             }
 
             return response.json({ keys })
@@ -31,7 +31,7 @@ class KeysController {
                 .first()
 
             if (!key) {
-                response.status(400).json({ message: 'key not found.' })
+                response.status(404).json({ message: 'key not found.' })
             }
 
             return response.json(key)
@@ -57,7 +57,7 @@ class KeysController {
             return response.send({ message: 'key created!', })
 
         } catch (error) {
-            return response.status(400).json({
+            return response.status(404).json({
                 message: 'error while creating key.', error: error
             })
         }
@@ -74,7 +74,7 @@ class KeysController {
                 .update(new_key)
 
             if (!key) {
-                return response.status(400).json({ message: 'key not found' })
+                return response.status(404).json({ message: 'key not found' })
             }
 
             return response.send({ message: 'key updated!' })
@@ -97,7 +97,7 @@ class KeysController {
                 .delete()
 
             if (!key) {
-                response.status(400).json({ message: 'key not found.' })
+                response.status(404).json({ message: 'key not found.' })
             }
 
             return response.json({ message: 'key deleted.' })
