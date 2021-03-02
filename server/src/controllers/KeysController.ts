@@ -10,13 +10,14 @@ class KeysController {
     }
 
     async show(request: Request, response: Response) {
+
         const { number } = request.params
 
         const key = await connection('keys')
             .select()
             .where('keys.number', number)
 
-        return response.json({ key })
+        return response.json(key)
     }
 
     async create(request: Request, response: Response) {
@@ -32,7 +33,14 @@ class KeysController {
     }
 
     async update(request: Request, response: Response) {
-        // const 
+        const { number } = request.params
+        const new_key = request.body
+
+        await connection('keys').where('keys.number', number)
+            .update(new_key)
+
+        return response.send({ message: 'key updated!' })
+
     }
 
     async delete() {
