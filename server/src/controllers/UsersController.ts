@@ -1,5 +1,6 @@
 import connection from '../database/connection';
 import { Request, Response } from 'express';
+import { EnumOptions } from 'knex';
 
 class UsersController {
 
@@ -36,17 +37,35 @@ class UsersController {
             return response.json(user)
 
         } catch (error) {
-            return response.status(400).json({ message: 'error while show user.' })
+            return response.status(400).json({ message: 'error while show user.', error: error })
         }
     }
 
-    create(request: Request, response: Response) {
+    async create(request: Request, response: Response) {
+
         const {
             registration_number,
             name,
             course_name,
             degree,
             shift } = request.body
+
+        try {
+            const user = await connection('users').insert(
+                {
+                    registration_number,
+                    name,
+                    course_name,
+                    degree,
+                    shift
+                }
+            )
+
+            return response.send({ message: 'user created.', user })
+
+        } catch (error) {
+            return response.status(400).json({ message: 'error while create user.', error: error })
+        }
 
     }
 
