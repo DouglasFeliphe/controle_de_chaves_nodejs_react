@@ -9,22 +9,22 @@ export async function seed(knex: Knex): Promise<void> {
         {
             registration_number: 1000000001,
             name: 'foo',
-            class: 'tecnólogo em sistemas para internet',
-            grade: '2° período',
+            course_name: 'tecnólogo em sistemas para internet',
+            degree: '2° período',
             shift: 'matutino'
         },
         {
             registration_number: 2000000001,
             name: 'bar',
-            class: 'tecnólogo em eventos',
-            grade: '4° período',
+            course_name: 'tecnólogo em eventos',
+            degree: '4° período',
             shift: 'vespertino'
         },
         {
             registration_number: 3000000001,
             name: 'baz',
-            class: 'licenciatura em dança',
-            grade: '1° período',
+            course_name: 'licenciatura em dança',
+            degree: '1° período',
             shift: 'noturno'
         }
     ]);

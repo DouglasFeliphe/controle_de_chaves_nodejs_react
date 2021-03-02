@@ -40,7 +40,13 @@ class UsersController {
         }
     }
 
-    create() {
+    create(request: Request, response: Response) {
+        const {
+            registration_number,
+            name,
+            course_name,
+            degree,
+            shift } = request.body
 
     }
 
