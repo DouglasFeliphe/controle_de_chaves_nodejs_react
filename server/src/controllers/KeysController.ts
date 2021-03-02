@@ -9,7 +9,7 @@ class KeysController {
             const keys = await connection('keys').select('*')
 
             if (!keys) {
-                return response.status(404).json({ error: 'return 0 results for keys.' })
+                return response.status(404).json({ error: '0 results returned.' })
             }
 
             return response.json({ keys })
