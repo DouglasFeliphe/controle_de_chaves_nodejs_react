@@ -20,7 +20,24 @@ class UsersController {
         }
     }
 
-    show(request: Request, response: Response) {
+    async show(request: Request, response: Response) {
+        const { registration_number } = request.params
+
+        try {
+            const user = await connection('users')
+                .where('users.registration_number', registration_number)
+                .select()
+                .first()
+
+            if (!user) {
+                return response.status(404).json({ message: 'user not found.' })
+            }
+
+            return response.json(user)
+
+        } catch (error) {
+            return response.status(400).json({ message: 'error while show user.' })
+        }
     }
 
     create() {
