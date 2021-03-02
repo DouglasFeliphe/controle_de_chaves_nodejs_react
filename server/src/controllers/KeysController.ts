@@ -1,49 +1,112 @@
 import { Request, Response } from 'express';
 import connection from '../database/connection';
 class KeysController {
+
     async index(request: Request, response: Response) {
-        const keys = await connection('keys').select('*')
-        if (!keys) {
-            return response.status(400).json({ error: 'keys not found.' })
+
+        try {
+
+            const keys = await connection('keys').select('*')
+
+            if (!keys) {
+                return response.status(400).json({ error: 'return 0 results for keys.' })
+            }
+
+            return response.json({ keys })
+
+        } catch (error) {
+            return response.status(400).json({ message: 'error while list keys.', error: error })
         }
-        return response.json({ keys })
+
     }
 
     async show(request: Request, response: Response) {
 
         const { number } = request.params
 
-        const key = await connection('keys')
-            .select()
-            .where('keys.number', number)
+        try {
+            const key = await connection('keys')
+                .where('keys.number', number)
+                .select()
+                .first()
 
-        return response.json(key)
+            if (!key) {
+                response.status(400).json({ message: 'key not found.' })
+            }
+
+            return response.json(key)
+
+        } catch (error) {
+            return response.status(400).json({
+                message: 'error while showing key.', error: error
+            })
+        }
     }
 
     async create(request: Request, response: Response) {
 
         const { number, name } = request.body
 
-        await connection('keys').insert({
-            number,
-            name
-        })
+        try {
 
-        return response.send({ message: 'key created!', })
+            await connection('keys').insert({
+                number,
+                name
+            })
+
+            return response.send({ message: 'key created!', })
+
+        } catch (error) {
+            return response.status(400).json({
+                message: 'error while creating key.', error: error
+            })
+        }
     }
 
     async update(request: Request, response: Response) {
         const { number } = request.params
         const new_key = request.body
 
-        await connection('keys').where('keys.number', number)
-            .update(new_key)
+        try {
 
-        return response.send({ message: 'key updated!' })
+            const key = await connection('keys')
+                .where('keys.number', number)
+                .update(new_key)
 
+            if (!key) {
+                return response.status(400).json({ message: 'key not found' })
+            }
+
+            return response.send({ message: 'key updated!' })
+
+        } catch (error) {
+            return response.status(400).json({
+                message: 'error while updating key.',
+                error: error
+            })
+        }
     }
 
-    async delete() {
+    async delete(request: Request, response: Response) {
+
+        const { number } = request.params
+
+        try {
+            const key = await connection('keys')
+                .where('keys.number', number)
+                .delete()
+
+            if (!key) {
+                response.status(400).json({ message: 'key not found.' })
+            }
+
+            return response.json({ message: 'key deleted.' })
+
+        } catch (error) {
+            return response.status(400).json({
+                message: 'error while deleting key.', error: error
+            })
+        }
 
     }
 }
