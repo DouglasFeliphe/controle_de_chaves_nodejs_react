@@ -1,5 +1,5 @@
 import express from 'express';
-import KeysController from './controllers/KeysController';
+import KeysController from '../controllers/KeysController';
 
 const keysController = new KeysController()
 
