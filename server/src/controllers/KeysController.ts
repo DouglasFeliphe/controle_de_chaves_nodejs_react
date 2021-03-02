@@ -23,17 +23,16 @@ class KeysController {
 
         const { number, name } = request.body
 
-        const key = await connection('keys').insert({
+        await connection('keys').insert({
             number,
             name
         })
 
-        return response.send({ message: 'key created!', key: key })
-
+        return response.send({ message: 'key created!', })
     }
 
-    async update() {
-
+    async update(request: Request, response: Response) {
+        // const 
     }
 
     async delete() {
