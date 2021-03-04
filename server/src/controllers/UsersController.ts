@@ -69,7 +69,27 @@ class UsersController {
 
     }
 
-    update() {
+    async update(request: Request, response: Response) {
+        const { registration_number } = request.params
+        const new_user = request.body
+
+        try {
+            const user = await connection('users')
+                .where('users.registration_number', registration_number)
+                .update(new_user)
+
+            if (!user) {
+                return response.status(404).json({ message: 'user not found.' })
+            }
+
+            return response.send({ message: 'user updated.' })
+
+        } catch (error) {
+            return response.status(400).json({
+                message: 'error while updating user.',
+                error: error
+            })
+        }
 
     }
 
