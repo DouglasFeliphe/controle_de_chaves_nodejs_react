@@ -93,8 +93,26 @@ class UsersController {
 
     }
 
-    delete() {
+    async delete(request: Request, response: Response) {
+        const { registration_number } = request.params
 
+        try {
+            const user = await connection('users')
+                .where('users.registration_number', registration_number)
+                .delete()
+
+            if (!user) {
+                return response.status(404).json({ message: 'user not found.' })
+            }
+
+            return response.json({ message: 'user deleted.' })
+
+        } catch (error) {
+            return response.status(400).json({
+                message: 'error while deleting user.',
+                error: error
+            })
+        }
     }
 }
 
