@@ -1,6 +1,9 @@
 import express from 'express';
-const routes = express.Router()
+import ReservationsController from '../controllers/ReservationsController';
 
-routes.get('/reservations')
+const routes = express.Router()
+const reservationsController = new ReservationsController()
+
+routes.get('/reservations', reservationsController.index)
 
 export default routes
