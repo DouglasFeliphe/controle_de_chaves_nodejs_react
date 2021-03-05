@@ -3,7 +3,7 @@ import * as Knex from "knex";
 
 export async function up(knex: Knex): Promise<void> {
     return knex.schema.createTable('reservations', table => {
-        table.integer('id').notNullable().primary()
+        table.increments('id').primary()
         table.string('key_name').notNullable()
         table.integer('key_number').notNullable()
         table.string('user_name').notNullable()
