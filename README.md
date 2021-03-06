@@ -14,28 +14,33 @@ para inicializar a interface da aplicação:
 <ul>
   <li>Entre na pasta 'web'</li>
   <li>Rode o comando: <code>npm start</code></li>
- </ul>
+</ul>
 
 ## Todo
-### backend     
-  [o] migration create_admin
-  [o] seed insert_admin
-  [o] index, show, create, update e delete
-  [o] JWT, autenticação e autorização
+### backend    
+<ul>
+  <li>[o] migration create_admin</li>
+  <li>[o] seed insert_admin</li>
+  <li>[o] index, show, create, update e delete</li>
+  <li>[o] JWT, autenticação e autorização</li>
+</ul> 
   
      
 ### front-end
-  [x] listar chave  
-  [o] deletar chave
-  [o] editar chave
-  [o] nova chave
+<ul>
+  <li>[x] listar chave  </li>
+  <li>[o] deletar chave</li>
+  <li>[o] editar chave</li>
+  <li>[o] nova chave</li>
 
-  [o] listar usuário
-  [o] deletar usuário
-  [o] editar usuário
-  [o] novo usuário
-  
-  [o] se a chave estiver emprestada, mudar a cor da imagem
+  <li>[o] listar usuário</li>
+  <li>[o] deletar usuário</li>
+  <li>[o] editar usuário</li>
+  <li>[o] novo usuário</li>
+ <li> </li>
+  <li>[o] se a chave estiver emprestada, mudar a cor da imagem</li>
+</ul>
+
 
 ### ERROS
   - botao nao funciona
