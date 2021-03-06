@@ -8,6 +8,7 @@ interface Reservations {
     key_number: number
     user_name: string
     user_registration_number: number
+    returned_at: string
 }
 class ReservationsController {
 
@@ -86,8 +87,26 @@ class ReservationsController {
 
     async update(request: Request, response: Response) {
 
-        // const {id} 
+        const { id } = request.params
+        const returned_at = request.body
 
+        try {
+            const new_reservation = await connection<Reservations>('reservations')
+                .where('reservations.id', id)
+                .update(returned_at)
+
+            if (!new_reservation) {
+                return response.status(404).json({ message: 'Reservation not found.' })
+            }
+
+            return response.send({ message: 'reservation updated.' })
+
+        } catch (error) {
+            return response.status(400).json({
+                message: 'error while updating reservation.',
+                error: error
+            })
+        }
     }
 
     async delete(request: Request, response: Response) {
