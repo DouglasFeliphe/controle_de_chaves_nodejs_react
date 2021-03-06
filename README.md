@@ -15,3 +15,31 @@ para inicializar a interface da aplicação:
   <li>Entre na pasta 'web'</li>
   <li>Rode o comando: <code>npm start</code></li>
   <ul>
+
+# Todo
+# backend     
+  [o] migration create_admin
+  [o] seed insert_admin
+  [o] index, show, create, update e delete
+  [o] JWT, autenticação e autorização
+  
+     
+# front-end
+  [x] listar chave
+  [o] deletar chave
+  [o] editar chave
+  [o] nova chave
+
+  [o] listar usuário
+  [o] deletar usuário
+  [o] editar usuário
+  [o] novo usuário
+  
+  [o] se a chave estiver emprestada, mudar a cor da imagem
+
+# ERROS
+  - botao nao funciona
+  - limpar cache
+
+
+
