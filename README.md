@@ -18,27 +18,26 @@ para inicializar a interface da aplicação:
 
 ## Todo
 ### backend    
-
-[ ] migration create_admin
-[ ] seed insert_admin
-[ ] index, show, create, update e delete
-[ ] JWT, autenticação e autorização
+- [ ] migration create_admin
+- [ ] seed insert_admin
+- [ ] index, show, create, update e delete
+- [ ] JWT, autenticação e autorização
 
   
      
 ### front-end
 
-[x] listar chave  
-[ ] deletar chave
-[ ] editar chave
-[ ] nova chave
+- [x] listar chave  
+- [ ] deletar chave
+- [ ] editar chave
+- [ ] nova chave
 
-[ ] listar usuário
-[ ] deletar usuário
-[ ] editar usuário
-[ ] novo usuário
+- [ ] listar usuário
+- [ ] deletar usuário
+- [ ] editar usuário
+- [ ] novo usuário
 
-[ ] se a chave estiver emprestada, mudar a cor da imagem
+- [ ] se a chave estiver emprestada, mudar a cor da imagem
 
 
 
