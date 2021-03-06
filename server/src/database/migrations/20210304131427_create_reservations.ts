@@ -9,7 +9,7 @@ export async function up(knex: Knex): Promise<void> {
         table.string('user_name').notNullable()
         table.integer('user_registration_number').references('registration_number').inTable('users')
         table.timestamp('created_at').defaultTo(knex.fn.now())
-        table.timestamp('returned_at').defaultTo(knex.fn.now())
+        table.timestamp('returned_at').defaultTo('')
     })
 }
 

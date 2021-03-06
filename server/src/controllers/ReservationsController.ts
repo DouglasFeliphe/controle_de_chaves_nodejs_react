@@ -88,12 +88,12 @@ class ReservationsController {
     async update(request: Request, response: Response) {
 
         const { id } = request.params
-        const returned_at = request.body
+        const data = request.body
 
         try {
             const new_reservation = await connection<Reservations>('reservations')
                 .where('reservations.id', id)
-                .update(returned_at)
+                .update(data)
 
             if (!new_reservation) {
                 return response.status(404).json({ message: 'Reservation not found.' })
