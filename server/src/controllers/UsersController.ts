@@ -1,6 +1,5 @@
 import connection from '../database/connection';
 import { Request, Response } from 'express';
-import { EnumOptions } from 'knex';
 
 class UsersController {
 
