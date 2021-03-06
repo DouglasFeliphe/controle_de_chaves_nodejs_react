@@ -17,15 +17,15 @@ para inicializar a interface da aplicação:
   <li>Rode o comando: <code>npm start</code></li>
   <ul>
 
-# Todo
-# backend     
+## Todo
+### backend     
   [o] migration create_admin
   [o] seed insert_admin
   [o] index, show, create, update e delete
   [o] JWT, autenticação e autorização
   
      
-# front-end
+### front-end
   [x] listar chave
   [o] deletar chave
   [o] editar chave
@@ -38,7 +38,7 @@ para inicializar a interface da aplicação:
   
   [o] se a chave estiver emprestada, mudar a cor da imagem
 
-# ERROS
+### ERROS
   - botao nao funciona
   - limpar cache
 
