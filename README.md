@@ -7,15 +7,14 @@ Sistema de controle de chaves utilizando <a href='https://pt-br.reactjs.org/'>Re
 para rodar o servidor da aplicação:
 <ul>  
   <li>Entre na pasta: 'server'</li>
-<li>Rode o comando: <code>npm run dev</code></li> 
-  </ul>
+  <li>Rode o comando: <code>npm run dev</code></li> 
+</ul>
 
-<<<<<<< HEAD
 para inicializar a interface da aplicação:
 <ul>
   <li>Entre na pasta 'web'</li>
   <li>Rode o comando: <code>npm start</code></li>
-  <ul>
+ </ul>
 
 ## Todo
 ### backend     
@@ -41,8 +40,3 @@ para inicializar a interface da aplicação:
 ### ERROS
   - botao nao funciona
   - limpar cache
-
-
-
-=======
->>>>>>> 896a47931729fa56a917e812900571f4d34a32db
