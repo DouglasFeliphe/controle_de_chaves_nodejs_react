@@ -110,7 +110,25 @@ class ReservationsController {
     }
 
     async delete(request: Request, response: Response) {
+        const { id } = request.params
 
+        try {
+            const reservation = await connection<Reservations>('reservations')
+                .where('id', id)
+                .delete()
+
+            if (!reservation) {
+                return response.status(404).json({ message: 'reservation not found.' })
+            }
+
+            return response.json({ message: 'reservation deleted.' })
+
+        } catch (error) {
+            return response.status(400).json({
+                message: 'error while deleting reservation.',
+                error: error
+            })
+        }
     }
 }
 
