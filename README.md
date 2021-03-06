@@ -25,7 +25,7 @@ para inicializar a interface da aplicação:
   
      
 ### front-end
-  [x] listar chave
+  [x] listar chave  
   [o] deletar chave
   [o] editar chave
   [o] nova chave
