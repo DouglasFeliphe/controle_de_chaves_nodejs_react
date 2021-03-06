@@ -18,28 +18,28 @@ para inicializar a interface da aplicação:
 
 ## Todo
 ### backend    
-<ul>
-  <li>[o] migration create_admin</li>
-  <li>[o] seed insert_admin</li>
-  <li>[o] index, show, create, update e delete</li>
-  <li>[o] JWT, autenticação e autorização</li>
-</ul> 
+
+[ ] migration create_admin
+[ ] seed insert_admin
+[ ] index, show, create, update e delete
+[ ] JWT, autenticação e autorização
+
   
      
 ### front-end
-<ul>
-  <li>[x] listar chave  </li>
-  <li>[o] deletar chave</li>
-  <li>[o] editar chave</li>
-  <li>[o] nova chave</li>
 
-  <li>[o] listar usuário</li>
-  <li>[o] deletar usuário</li>
-  <li>[o] editar usuário</li>
-  <li>[o] novo usuário</li>
+[x] listar chave  
+[ ] deletar chave
+[ ] editar chave
+[ ] nova chave
 
-  <li>[o] se a chave estiver emprestada, mudar a cor da imagem</li>
-</ul>
+[ ] listar usuário
+[ ] deletar usuário
+[ ] editar usuário
+[ ] novo usuário
+
+[ ] se a chave estiver emprestada, mudar a cor da imagem
+
 
 
 ### ERROS
