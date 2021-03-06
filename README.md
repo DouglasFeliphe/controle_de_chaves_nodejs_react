@@ -17,17 +17,16 @@ para inicializar a interface da aplicação:
 </ul>
 
 ## Todo
-### backend    
+
+### backend
 - [ ] migration create_admin
 - [ ] seed insert_admin
 - [ ] index, show, create, update e delete
 - [ ] JWT, autenticação e autorização
-
   
      
 ### front-end
-
-- [x] listar chave  
+- [x] listar chave 
 - [ ] deletar chave
 - [ ] editar chave
 - [ ] nova chave
