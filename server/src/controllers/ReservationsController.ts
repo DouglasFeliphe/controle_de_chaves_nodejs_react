@@ -1,6 +1,14 @@
 import { Request, response, Response } from 'express';
 import connection from '../database/connection';
 
+
+interface Reservations {
+    id: number
+    key_name: string
+    key_number: number
+    user_name: string
+    user_registration_number: number
+}
 class ReservationsController {
 
     async index(request: Request, response: Response) {
@@ -26,8 +34,8 @@ class ReservationsController {
         const { id } = request.params
 
         try {
-            const reservation = await connection('reservations')
-                .where('reservations.id', id)
+            const reservation = await connection<Reservations>('reservations')
+                .where('id', id)
                 .select()
                 .first()
 
@@ -47,10 +55,38 @@ class ReservationsController {
 
     async create(request: Request, response: Response) {
 
+        const {
+            id,
+            key_name,
+            key_number,
+            user_name,
+            user_registration_number
+        } = request.body
+
+        try {
+            const reservation = await connection<Reservations>('reservations').insert({
+                id,
+                key_name,
+                key_number,
+                user_name,
+                user_registration_number
+            })
+
+            return response.send({ message: 'reservation created.', reservation })
+
+        } catch (error) {
+            return response.status(400).json({
+                message: 'error while creating reservation.',
+                error: error.message
+            })
+        }
+
     }
 
 
     async update(request: Request, response: Response) {
+
+        // const {id} 
 
     }
 
