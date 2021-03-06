@@ -5,9 +5,9 @@ const routes = express.Router()
 const reservationsController = new ReservationsController()
 
 routes.get('/reservations', reservationsController.index)
-routes.get('/reservations/:registration_number', reservationsController.show)
+routes.get('/reservations/:id', reservationsController.show)
 routes.post('/reservation', reservationsController.create)
-routes.put('/reservations/:registration_number', reservationsController.update)
-routes.delete('/reservations/:registration_number', reservationsController.delete)
+routes.put('/reservations/:id', reservationsController.update)
+routes.delete('/reservations/:id', reservationsController.delete)
 
 export default routes
