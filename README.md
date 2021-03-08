@@ -37,7 +37,7 @@ para inicializar a interface da aplicação:
   <li>[o] deletar usuário</li>
   <li>[o] editar usuário</li>
   <li>[o] novo usuário</li>
- <li> </li>
+ 
   <li>[o] se a chave estiver emprestada, mudar a cor da imagem</li>
 </ul>
 
