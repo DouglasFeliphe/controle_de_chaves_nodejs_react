@@ -17,13 +17,13 @@ interface Users {
 
 interface Reservations {
   id: number
-  date: string
-  user_name: string
   key_name: string
   key_number: number
-  delivered_at: string
+  user_name: string
+  user_registration_number: number
+  created_at: string
   returned_at: string
-  status: boolean
+  // status: boolean
 }
 
 function App() {
@@ -68,6 +68,25 @@ function App() {
       alert('Erro ao deletar chave, tente novamente.')
 
     }
+  }
+
+  const StatusComponent = (reservation: Reservations) => {
+    return (
+
+      reservation.returned_at ?
+        <td>
+          <span className={`badge badge-success`}>
+            {reservation.returned_at}
+            <i className="fas fa-check ml-2"></i>
+          </span>
+        </td>
+        :
+        <td>
+          <span className="badge badge-danger">
+            <i className="fas fa-times"></i>
+          </span>
+        </td>
+    )
   }
 
   return (
@@ -146,24 +165,23 @@ function App() {
             <table className="table table-striped">
               <thead>
                 <tr>
-                  <th>Date</th>
-                  <th>User name</th>
-                  <th>Key name</th>
-                  <th>Key number</th>
-                  <th>Delivered at</th>
-                  <th>Returned at</th>
+                  <th>N° Chave</th>
+                  <th>Nome</th>
+                  <th>Usuário</th>
+                  <th>N° Registro</th>
+                  <th>Criado em</th>
+                  <th>Devolvido em</th>
                 </tr>
               </thead>
               <tbody>
                 {reservations?.map(reservation => (
                   <tr key={reservation.id}>
-                    <td>{reservation.date}</td>
-                    <td>{reservation.user_name}</td>
-                    <td>{reservation.key_name}</td>
                     <td>{reservation.key_number}</td>
-                    <td>{reservation.delivered_at}</td>
-                    <td>{reservation.returned_at}</td>
-                    <td>{reservation.status}</td>
+                    <td>{reservation.key_name}</td>
+                    <td>{reservation.user_name}</td>
+                    <td>{reservation.user_registration_number}</td>
+                    <td>{reservation.created_at}</td>
+                    <StatusComponent {...reservation}></StatusComponent>
                   </tr>
                 ))}
               </tbody>
@@ -178,6 +196,8 @@ function App() {
       </div>
     </>
   );
+
+
 }
 
 export default App;
