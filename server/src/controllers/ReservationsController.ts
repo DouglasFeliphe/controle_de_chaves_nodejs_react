@@ -21,7 +21,7 @@ class ReservationsController {
                 return response.status(404).json({ message: '0 results returned.' })
             }
 
-            return response.json({ reservations })
+            return response.json(reservations)
 
         } catch (error) {
             return response.status(400).json({
@@ -44,7 +44,7 @@ class ReservationsController {
                 return response.status(404).json({ message: 'reservation not found.' })
             }
 
-            return response.json({ reservation })
+            return response.json(reservation)
 
         } catch (error) {
             return response.status(400).json({

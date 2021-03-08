@@ -12,7 +12,7 @@ class KeysController {
                 return response.status(404).json({ error: '0 results returned.' })
             }
 
-            return response.json({ keys })
+            return response.json(keys)
 
         } catch (error) {
             return response.status(400).json({ message: 'error while list keys.', error: error })
