@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Menu from '../../components/Menu';
 import api from '../../services/api';
 
 interface Users {
@@ -19,6 +20,7 @@ const Users = () => {
 
     return (
         <>
+            <Menu></Menu>
         </>
     );
 }
