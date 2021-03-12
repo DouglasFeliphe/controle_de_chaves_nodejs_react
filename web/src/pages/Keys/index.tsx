@@ -52,8 +52,8 @@ const Keys: React.FC = () => {
                                         alt='no_image'
                                     />
                                     {/* <button onClick={() => handleDeleteKey(key.number)} className="fas fa-times btn btn-danger" >x</button> */}
-                                    <h5>{key.name}</h5>
-                                    <strong>{key.number}</strong>
+                                    <h4>N° {key.number}</h4>
+                                    <span>{key.name}</span>
                                     <br />
                                     <button className='btn btn-warning btn-rounded' data-toggle="modal" data-target="#modal-create-reservation">Reservar</button>
                                 </div>
