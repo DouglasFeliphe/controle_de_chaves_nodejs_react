@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CreateKey from '../CreateKey';
 import api from '../../services/api';
-import ImgChave from './assets/img/chave.jpg';
-
+// import ImgChave from '../../assets/img/chave.png';
 
 interface Keys {
     number: number
@@ -11,27 +10,30 @@ interface Keys {
 
 const Keys: React.FC = () => {
 
-    const [keys, setKeys] = useState<Keys[]>([]);
+    // const [keys, setKeys] = useState<Keys[]>([]);
 
-    // // listando as chaves
-    useEffect(() => {
-        api.get('keys/').then(response => {
-            setKeys(response.data)
-        })
-    }, []);
+    // // // listando as chaves
+    // useEffect(() => {
+    //     api.get('keys/').then(response => {
+    //         setKeys(response.data)
+    //     })
+    // }, []);
 
-    async function handleDeleteKey(_keyNumber: number) {
-        try {
-            await api.delete(`keys/${_keyNumber}/`)
-            alert(`Chave ${_keyNumber} deletada com sucesso.`)
+    // async function handleDeleteKey(_keyNumber: number) {
+    //     try {
+    //         await api.delete(`keys/${_keyNumber}/`)
+    //         alert(`Chave ${_keyNumber} deletada com sucesso.`)
 
-        } catch (error) {
-            alert('Erro ao deletar chave, tente novamente.')
-        }
-    }
+    //     } catch (error) {
+    //         alert('Erro ao deletar chave, tente novamente.')
+    //     }
+    // }
 
     return (
+
+
         <div className="row">
+            <h1>ok</h1>
             <aside className='col-sm-2 d-flex flex-column align-items-center'>
                 {/* BOTÕES */}
                 <button
@@ -64,10 +66,10 @@ const Keys: React.FC = () => {
 
                     <div className='row'>
                         <div className="col-lg-12"></div>
-                        {keys.map(key => (
+                        {/* {keys.map(key => (
                             <div key={key.number} className="col-lg-4 text-center">
                                 <img
-                                    src={ImgChave}
+                                    // src={ImgChave}
                                     className="img-chave"
                                     data-toggle="modal"
                                     data-target={'#modal-0' + key.number}
@@ -79,13 +81,13 @@ const Keys: React.FC = () => {
                                 <br />
                                 <button className='btn btn-warning btn-rounded' data-toggle="modal" data-target="#modal-create-reservation">Reservar</button>
                             </div>
-                        ))}
+                        ))} */}
                     </div>
 
                 </div>
 
                 {/* MODALS */}
-                <CreateKey />
+                {/* <CreateKey /> */}
                 {/* <CreateUser /> */}
                 {/* <CreateReservation users={users} /> */}
 

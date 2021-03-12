@@ -43,9 +43,10 @@ const Reservations = () => {
     }
 
     return (
-        <div className="my-3 p-3 bg-white rounded shadow-sm">
-            <h6 className="border-bottom border-gray pb-2 mb-0">Ùltimas Reservas</h6>
-            <table className="table table-striped">
+        <div className="container">
+            <h1 className='text-center mb-5'>Reservas</h1>
+            <h6 className="border-bottom border-gray pb-2 mb-0">Últimas Reservas</h6>
+            <table className="table table-striped table-hover">
                 <thead>
                     <tr>
                         <th>N° Chave</th>

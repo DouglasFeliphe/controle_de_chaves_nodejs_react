@@ -1,21 +1,28 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Keys: React.FC = () => {
     return (
         <div>
             <h1 className="text-center mb-5">Controle de Chaves</h1>
             <ul className="nav nav-tabs dflex justify-content-center">
-                <li className="nav-item">
-                    <a className="nav-link active" href="#">Chaves</a>
-                </li>
-                <li className="nav-item">
-                    <a className="nav-link" href="#">Reservas</a>
-                </li>
-                <li className="nav-item">
-                    <a className="nav-link" href="#">Controle</a>
-                </li>
+                <Link to='/keys'>
+                    <li className="nav-item">
+                        <span className="nav-link active" >Chaves</span>
+                    </li>
+                </Link>
+                <Link to='/reservations'>
+                    <li className="nav-item">
+                        <span className="nav-link">Reservas</span>
+                    </li>
+                </Link>
+                <Link to='/users'>
+                    <li className="nav-item">
+                        <span className="nav-link">Controle</span>
+                    </li>
+                </Link>
             </ul>
-        </div>
+        </div >
     )
 }
 
