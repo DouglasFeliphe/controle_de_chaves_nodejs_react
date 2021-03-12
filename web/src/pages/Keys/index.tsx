@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import CreateKey from '../CreateKey';
 import api from '../../services/api';
 import Menu from '../../components/Menu';
-import ImgChave from '../../assets/img/chave.png';
+import ImgChave from '../../assets/chave.jpg';
+
 
 interface Keys {
     number: number
@@ -40,18 +41,17 @@ const Keys: React.FC = () => {
                     <div className="my-3 p-3 bg-white rounded shadow-sm ">
                         <h6 className="border-bottom border-gray pb-2 mb-0">  </h6>
 
-                        <div className='row'>
-                            <div className="col-lg-12"></div>
+                        <div className='row container'>
                             {keys.map(key => (
-                                <div key={key.number} className="col-lg-4 text-center">
+                                <div key={key.number} className="col-lg-4 d-flex flex-column justify-content-center align-items-center">
                                     <img
-                                        // src={ImgChave}
-                                        className="img-chave"
+                                        src={ImgChave}
+                                        className="img-chave h-50"
                                         data-toggle="modal"
                                         data-target={'#modal-0' + key.number}
                                         alt='no_image'
                                     />
-                                    <button onClick={() => handleDeleteKey(key.number)} className="fas fa-times"></button>
+                                    {/* <button onClick={() => handleDeleteKey(key.number)} className="fas fa-times btn btn-danger" >x</button> */}
                                     <h5>{key.name}</h5>
                                     <strong>{key.number}</strong>
                                     <br />
