@@ -14,7 +14,7 @@ const Routes = () => {
         <BrowserRouter>
             <Switch>
                 <Route path='/' exact>
-                    <Menu />
+                    <Keys />
                 </Route>
                 <Route path='/keys' >
                     <Keys />
