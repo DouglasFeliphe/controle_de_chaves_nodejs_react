@@ -1,5 +1,6 @@
 import ButtonCreate from '../../components/ButtonCreate';
 import React, { useState, useEffect } from 'react';
+import Card from '../../components/Card';
 import CreateKey from '../CreateKey';
 import api from '../../services/api';
 import Menu from '../../components/Menu';
@@ -35,39 +36,21 @@ const Keys: React.FC = () => {
     return (
         <>
             <Menu></Menu>
-            <div className="row">
+            <div className="row m-5">
 
                 <main role="main" className="container col-sm-8">
                     {/* CHAVES */}
-                    <div className="my-3 p-3 bg-white rounded shadow-sm ">
-                        <h6 className="border-bottom border-gray pb-2 mb-0">  </h6>
-        
-                        <div className='row container'>
-                            {keys.map(key => (
-                                <div key={key.number} className="col-lg-4 d-flex flex-column justify-content-center align-items-center">
-                                    <img
-                                        src={ImgChave}
-                                        className="img-chave h-50"
-                                        data-toggle="modal"
-                                        data-target={'#modal-0' + key.number}
-                                        alt='no_image'
-                                    />
-                                    {/* <button onClick={() => handleDeleteKey(key.number)} className="fas fa-times btn btn-danger" >x</button> */}
-                                    <h4>N° {key.number}</h4>
-                                    <span>{key.name}</span>
-                                    <br />
-                                    <button className='btn btn-warning btn-rounded' data-toggle="modal" data-target="#modal-create-reservation">Reservar</button>
-                                </div>
-                            ))}
-                        </div>
 
+                    <div className='row'>
+                        {keys.map(key => (
+                            <Card key={key.number} data={key}></Card>
+                        ))}
                     </div>
 
                     <ButtonCreate component='Keys' />
 
                     {/* <CreateUser /> */}
                     {/* <CreateReservation users={users} /> */}
-
                 </main>
 
             </div>
