@@ -1,3 +1,4 @@
+import ButtonCreate from '../../components/ButtonCreate';
 import React, { useState, useEffect } from 'react';
 import CreateKey from '../CreateKey';
 import api from '../../services/api';
@@ -40,7 +41,7 @@ const Keys: React.FC = () => {
                     {/* CHAVES */}
                     <div className="my-3 p-3 bg-white rounded shadow-sm ">
                         <h6 className="border-bottom border-gray pb-2 mb-0">  </h6>
-
+        
                         <div className='row container'>
                             {keys.map(key => (
                                 <div key={key.number} className="col-lg-4 d-flex flex-column justify-content-center align-items-center">
@@ -62,27 +63,8 @@ const Keys: React.FC = () => {
 
                     </div>
 
+                    <ButtonCreate component='Keys' />
 
-                    <div className='d-flex flex-column align-items-center'>
-                        {/* BOTÕES */}
-                        <button
-                            className="btn btn-primary m-5"
-                            data-toggle="modal"
-                            data-target="#modal-create-key" >
-                            Nova  Chave
-                            <i className="fas fa-plus"></i>
-                        </button>
-                        <button
-                            className="btn btn-primary"
-                            data-toggle="modal"
-                            data-target="#modal-create-user">
-                            Novo Usuário
-                            <i className="fas fa-plus"></i>
-                        </button>
-                    </div>
-
-                    {/* MODALS */}
-                    {/* <CreateKey /> */}
                     {/* <CreateUser /> */}
                     {/* <CreateReservation users={users} /> */}
 
@@ -93,4 +75,11 @@ const Keys: React.FC = () => {
     )
 }
 
+
+function undefined({ }) {
+    return (<button className="btn btn-primary" data-toggle="modal" data-target="#modal-create-user">
+        Novo Usuário
+        <i className="fas fa-plus"></i>
+    </button>);
+}
 export default Keys;
