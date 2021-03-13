@@ -3,12 +3,12 @@ import ModalCreateKey from "../../pages/CreateKey";
 import ModalCreateUser from "../../pages/CreateUser";
 
 
-export default function ButtonCreate(props: any) {
+export default function ButtonCreate({ component }: any) {
 
   return (
     <>
       {
-        props.component === 'Keys' ?
+        component === 'Keys' ?
           <div className='float-right'>
             <button
               className="btn btn-primary btn-lg m-5"

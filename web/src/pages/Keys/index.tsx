@@ -37,13 +37,13 @@ const Keys: React.FC = () => {
         <>
             <Menu></Menu>
             <div className="row m-5">
-
                 <main role="main" className="container col-sm-8">
-                    {/* CHAVES */}
+                    <h1 className='text-center mb-5'>Chaves </h1>
 
+                    {/* CHAVES */}
                     <div className='row'>
                         {keys.map(key => (
-                            <Card key={key.number} data={key}></Card>
+                            <Card key={key.number} image={ImgChave} data={key}></Card>
                         ))}
                     </div>
 
@@ -52,7 +52,6 @@ const Keys: React.FC = () => {
                     {/* <CreateUser /> */}
                     {/* <CreateReservation users={users} /> */}
                 </main>
-
             </div>
         </>
     )
