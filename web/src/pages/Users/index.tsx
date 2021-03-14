@@ -29,9 +29,12 @@ const Users = () => {
                     <h1 className='text-center mb-5'>Usuários </h1>
 
                     {/* USUÁRIOS */}
-                    <div className="row">
+                    <div className='row dflex justify-content-around'>
                         {users.map(user => (
-                            <Card data={user} image={ImgUsuario}></Card>
+                            <Card
+                                data={user}
+                                image={ImgUsuario}>
+                            </Card>
                         ))}
                     </div>
                     <ButtonCreate component='Users'></ButtonCreate>

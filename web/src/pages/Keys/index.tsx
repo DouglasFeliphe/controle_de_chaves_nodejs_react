@@ -41,14 +41,18 @@ const Keys: React.FC = () => {
                     <h1 className='text-center mb-5'>Chaves </h1>
 
                     {/* CHAVES */}
-                    <div className='row'>
+                    <div className='row dflex justify-content-around'>
                         {keys.map(key => (
-                            <Card key={key.number} image={ImgChave} data={key}></Card>
+                            <Card
+                                key={key.number}
+                                image={ImgChave}
+                                data={key}
+                                withButton={true}
+                            ></Card>
                         ))}
                     </div>
 
                     <ButtonCreate component='Keys' />
-
                     {/* <CreateUser /> */}
                     {/* <CreateReservation users={users} /> */}
                 </main>
