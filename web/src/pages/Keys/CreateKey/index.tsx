@@ -30,7 +30,6 @@ const CreateKey: React.FC = () => {
         <ModalScreen
             id='modal-create-key'
             title='Nova Chave'
-            // onSubmit={(event: FormEvent) => handleCreateKey(event)}
             onSubmit={(e: FormEvent) => handleCreateKey(e)}>
 
             <Fragment>

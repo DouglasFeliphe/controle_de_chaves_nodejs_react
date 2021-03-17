@@ -1,7 +1,7 @@
+import React, { Fragment, useState, useEffect, FormEvent } from 'react';
 import ButtonCreate from '../../components/ButtonCreate';
-import React, { useState, useEffect } from 'react';
 import Card from '../../components/Card';
-import CreateKey from './CreateKey';
+import ModalCreateReservation from '../../components/ModalScreen';
 import api from '../../services/api';
 import Menu from '../../components/Menu';
 import ImgChave from '../../assets/chave.jpg';
@@ -33,8 +33,12 @@ const Keys: React.FC = () => {
         }
     }
 
+    function handleCreateReservation(event: FormEvent) {
+        alert('msg');
+    }
+
     return (
-        <>
+        <Fragment>
             <Menu></Menu>
             <div className="row m-5">
                 <main role="main" className="container col-sm-8">
@@ -46,26 +50,18 @@ const Keys: React.FC = () => {
                             <Card
                                 key={key.number}
                                 image={ImgChave}
-                                data={key}
-                                withButton={true}
-                            ></Card>
+                                data={key}>
+                                <ButtonCreate modal='Reservations' />
+                            </Card>
                         ))}
                     </div>
 
-                    <ButtonCreate component='Keys' />
-                    {/* <CreateUser /> */}
-                    {/* <CreateReservation users={users} /> */}
+                    <ButtonCreate modal='Keys' />
+
                 </main>
             </div>
-        </>
+        </Fragment>
     )
 }
 
-
-function undefined({ }) {
-    return (<button className="btn btn-primary" data-toggle="modal" data-target="#modal-create-user">
-        Novo Usuário
-        <i className="fas fa-plus"></i>
-    </button>);
-}
 export default Keys;

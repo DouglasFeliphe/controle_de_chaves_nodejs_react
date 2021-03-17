@@ -37,7 +37,7 @@ const Users = () => {
                             </Card>
                         ))}
                     </div>
-                    <ButtonCreate component='Users'></ButtonCreate>
+                    <ButtonCreate modal='Users'></ButtonCreate>
                 </main>
             </div>
         </>

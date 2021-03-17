@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Card({ image, data, withButton }: any) {
+export default function Card({ image, data, children }: any) {
 
     return (
         <div className="card dflex align-items-center py-3">
@@ -12,12 +12,7 @@ export default function Card({ image, data, withButton }: any) {
             <div className="card-body text-center">
                 <h4 className="card-title">{data.name}</h4>
                 <p className="card-text">N° {data.number | data.registration_number}</p>
-                {
-                    withButton ?
-                        <button className="btn btn-warning">Reservar</button>
-                        :
-                        null    
-                }
+                {children}
             </div>
         </div>
     )
