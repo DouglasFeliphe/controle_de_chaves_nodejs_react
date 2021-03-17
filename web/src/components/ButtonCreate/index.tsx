@@ -1,6 +1,6 @@
 import React from "react";
-import ModalCreateKey from "../../pages/CreateKey";
-import ModalCreateUser from "../../pages/CreateUser";
+import ModalCreateKey from "../../pages/Keys/CreateKey";
+import ModalCreateUser from "../../pages/Users/CreateUser";
 
 
 export default function ButtonCreate({ component }: any) {

@@ -1,6 +1,6 @@
-import React, { useState, FormEvent } from 'react';
-import ModalScreen from '../../components/ModalScreen';
-import api from '../../services/api';
+import React, { useState, FormEvent, Fragment } from 'react';
+import ModalScreen from '../../../components/ModalScreen';
+import api from '../../../services/api';
 
 const CreateKey: React.FC = () => {
 
@@ -26,15 +26,16 @@ const CreateKey: React.FC = () => {
         }
     }
 
-    return <ModalScreen
-        id='modal-create-key'
-        title='Nova Chave'
-        // onSubmit={(event: FormEvent) => handleCreateKey(event)}
-        onSubmit={(e: FormEvent) => handleCreateKey(e)}
-        body={
-            <>
+    return (
+        <ModalScreen
+            id='modal-create-key'
+            title='Nova Chave'
+            // onSubmit={(event: FormEvent) => handleCreateKey(event)}
+            onSubmit={(e: FormEvent) => handleCreateKey(e)}>
+
+            <Fragment>
                 <div className="form-group" >
-                    <label htmlFor="email">Nome da Chave:</label>
+                    <label htmlFor="email">Nome:</label>
                     <input
                         className="form-control"
                         value={name}
@@ -50,10 +51,9 @@ const CreateKey: React.FC = () => {
                         onChange={e => setNumber(parseInt(e.target.value))}
                     />
                 </div>
-            </>
-        }
-        confirmButtonText='Salvar'
-    />
+            </Fragment>
+        </ModalScreen>
+    )
 }
 
 export default CreateKey;

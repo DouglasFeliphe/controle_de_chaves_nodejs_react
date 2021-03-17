@@ -1,7 +1,7 @@
 import ButtonCreate from '../../components/ButtonCreate';
 import React, { useState, useEffect } from 'react';
 import Card from '../../components/Card';
-import CreateKey from '../CreateKey';
+import CreateKey from './CreateKey';
 import api from '../../services/api';
 import Menu from '../../components/Menu';
 import ImgChave from '../../assets/chave.jpg';

@@ -1,5 +1,5 @@
 import React from 'react';
-import ModalScreen from '../../components/ModalScreen';
+import ModalScreen from '../../../components/ModalScreen';
 
 interface CreateReservationProps {
     // date: string
@@ -23,11 +23,12 @@ interface Keys {
 
 const CreateReservation = (props: CreateReservationProps) => {
 
-    return <ModalScreen
-        id='modal-create-reservation'
-        title='Nova Reserva'
-        onSubmit={() => { }}
-        body={
+    return (
+        <ModalScreen
+            id='modal-create-reservation'
+            title='Nova Reserva'
+            onSubmit={() => { }}>
+
             <div className="form-group">
                 <label htmlFor="user">Usuário:</label>
                 <select className='form-control' name="" id="">
@@ -36,9 +37,9 @@ const CreateReservation = (props: CreateReservationProps) => {
                     ))}
                 </select>
             </div>
-        }
-        confirmButtonText='Reservar'
-    />
+
+        </ModalScreen>
+    )
 }
 
 
