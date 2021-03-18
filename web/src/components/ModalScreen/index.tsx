@@ -24,14 +24,15 @@ const ModalScreen = (props: ModalProps) => {
                             </button>
                         </div>
 
-                        <div className="modal-body p-5">
+                        <div className="modal-body p-5 ">
                             {props.children}
                         </div>
 
                         <div className="modal-footer">
                             <button type="submit"
                                 className="btn btn-success"
-                                data-dismiss="modal">
+                                data-dismiss="modal"
+                            >
                                 Salvar
                             </button>
                             <button type="button"

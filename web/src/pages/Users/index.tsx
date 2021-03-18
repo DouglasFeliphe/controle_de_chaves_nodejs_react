@@ -31,7 +31,7 @@ const Users = () => {
                     {/* USUÁRIOS */}
                     <div className='row dflex justify-content-around'>
                         {users.map(user => (
-                            <Card
+                            <Card key={user.registration_number}
                                 data={user}
                                 image={ImgUsuario}>
                             </Card>
