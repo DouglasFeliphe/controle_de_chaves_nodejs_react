@@ -1,18 +1,19 @@
-import React, { Children, ReactNode } from 'react';
+import React, { FormEvent } from 'react';
 
 interface ModalProps {
     children?: React.ReactNode
     id: string
     title: string
-    onSubmit: Function
+    onSubmit(event: FormEvent): void
 }
 
 const ModalScreen = (props: ModalProps) => {
+
     return (
         <div className="modal fade" id={props.id} >
             <div className="modal-dialog modal-dialog-centered">
                 <div className="modal-content">
-                    <form onSubmit={event => props.onSubmit(event)}>
+                    <form onSubmit={props.onSubmit}>
 
                         <div className="modal-header">
                             <h4 className="modal-title">{props.title}</h4>
@@ -31,7 +32,7 @@ const ModalScreen = (props: ModalProps) => {
                         <div className="modal-footer">
                             <button type="submit"
                                 className="btn btn-success"
-                                data-dismiss="modal"
+                            // data-dismiss="modal"
                             >
                                 Salvar
                             </button>
@@ -41,7 +42,6 @@ const ModalScreen = (props: ModalProps) => {
                                 Cancelar
                             </button>
                         </div>
-
                     </form>
                 </div>
             </div>
