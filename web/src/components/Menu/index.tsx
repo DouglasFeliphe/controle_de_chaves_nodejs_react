@@ -1,39 +1,87 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import NavItem from './NavItem';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faKey, faCalendar, faUsers } from '@fortawesome/free-solid-svg-icons'; // Import the specific icons you want to use
 
-const Keys: React.FC = () => {
+const Menu = ({ children }: any) => {
+  const [user, setUser] = useState({
+    name: 'John Doe',
+    email: 'john.doe@example.com',
+    // profilePicture: 'path-to-profile-picture.jpg',
+    profilePicture: 'https://i.pravatar.cc/300?u=fake@pravatar.com',
+    isOnline: true, // Set this to true or false based on user's online status
+  });
 
-    const [navItemClass, setNavItemClass] = useState(true);
+  return (
+    <div className='container-fluid'>
+      <div className='row'>
+        {/* Dark Sidebar */}
 
-    // const isBoxVisible = false
+        <nav
+          id='sidebar'
+          className='col-md-2 d-md-block sidebar bg-dark'
+          style={{ height: '100vh' }}
+        >
+          <div className='p-3'>
+            <h3 className='text-white '>Controle de Chaves</h3>
+          </div>
 
-    const toggleBox = () => {
-        setNavItemClass(!navItemClass);
-    };
+          {/* User Info Header */}
+          <header className='text-white border-bottom border-top border-1 border-dashed p-3'>
+            <div className='d-flex flex-column align-items-center'>
+              <div className='d-flex align-items-center'>
+                <img
+                  src={user.profilePicture}
+                  alt='User Profile'
+                  className='rounded-circle mr-2'
+                  width='40'
+                  height='40'
+                />
+                <div>
+                  <h6 className='mb-0'>{user.name}</h6>
+                  <small>{user.email}</small>
+                </div>
+              </div>
+              {/* User logged status */}
+              <div className='mt-2 d-flex justify-content-center align-items-center'>
+                <div className='badge badge-success rounded-circle d-inline-block p-2' />
+                <small className='mb-0 ml-2'>
+                  {user.isOnline ? 'Online' : 'Offline'}
+                </small>
+              </div>
+            </div>
+          </header>
 
-    return (
-        <div>
-            <h1 className="text-center mb-5">Controle de Chaves</h1>
-            <ul className="nav nav-tabs dflex justify-content-center">
-                <Link to='/reservations'>
-                    <NavItem text='Reservas' />
-                </Link>
-                <Link to='/keys'>
-                    <NavItem text='Chaves' />
-                </Link>
-                <Link to='/users'>
-                    <NavItem text='Usuários' />
-                </Link>
+          <div className='position-sticky p-3'>
+            <ul className='nav flex-column'>
+              <li className='nav-item d-flex justify-content-between align-items-center'>
+                <a className='nav-link active' href='/keys'>
+                  <FontAwesomeIcon icon={faKey} /> Chaves
+                </a>
+                <span className='badge badge-primary badge-pill'>5</span>
+              </li>
+              <li className='nav-item d-flex justify-content-between align-items-center'>
+                <a className='nav-link' href='/reservations'>
+                  <FontAwesomeIcon icon={faCalendar} /> Reservas
+                </a>
+                <span className='badge badge-success badge-pill'>5</span>
+              </li>
+              <li className='nav-item d-flex justify-content-between align-items-center'>
+                <a className='nav-link' href='/users'>
+                  <FontAwesomeIcon icon={faUsers} /> Usuários
+                </a>
+                <span className='badge badge-info badge-pill'>5</span>
+              </li>
             </ul>
-        </div >
-    )
-}
+          </div>
+        </nav>
 
+        {/* Main content */}
+        <main className='col-md-9 ms-sm-auto col-lg-10 px-md-4'>
+          {children}
+        </main>
+      </div>
+    </div>
+  );
+};
 
-function navItem({ }) {
-    return (<li className="nav-item">
-        <span className="nav-link">Usuários</span>
-    </li>);
-}
-export default Keys;
+export default Menu;

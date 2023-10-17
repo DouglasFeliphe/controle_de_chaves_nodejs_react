@@ -2,10 +2,8 @@ import React, { useContext } from 'react';
 import Routes from './routes';
 import './App.css';
 
-const App: React.FC = () => {
-  return (
-    <Routes></Routes>
-  );
-}
+const App = () => {
+  return <Routes />;
+};
 
 export default App;
