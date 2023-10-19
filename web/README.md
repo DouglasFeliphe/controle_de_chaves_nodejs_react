@@ -1,44 +1,121 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Controle de Chaves
 
-## Available Scripts
+Este é um exemplo de README.md para um web app de controle de chaves, criado com React.js, TypeScript, React Query, Zustand e Toastify.
 
-In the project directory, you can run:
+## Tabela de Conteúdos
 
-### `npm start`
+- [Visão Geral](#visão-geral)
+- [Recursos](#recursos)
+- [Requisitos](#requisitos)
+- [Começando](#começando)
+  - [Instalação](#instalação)
+  - [Configuração](#configuração)
+- [Uso](#uso)
+- [Estrutura de Diretórios](#estrutura-de-diretórios)
+- [Contribuições](#contribuições)
+- [Licença](#licença)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Visão Geral
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+O Controle de Chaves é um aplicativo que permite gerenciar e rastrear o uso de chaves em um ambiente específico. Este aplicativo é projetado para simplificar o controle de acesso e garantir a segurança das instalações.
 
-### `npm test`
+## Recursos
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Registre chaves e atribua-as a funcionários.
+- Registre entradas e saídas de chaves.
+- Gere relatórios sobre o uso de chaves.
+- Alertas e notificações para chaves em atraso ou pendentes.
 
-### `npm run build`
+## Requisitos
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Liste os requisitos para executar o seu web app. Por exemplo:
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- Node.js (v16.0.0 ou superior)
+- npm ou yarn
+- Navegador da web moderno
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Começando
 
-### `npm run eject`
+Estas instruções ajudarão você a configurar e executar o projeto em sua máquina local. Certifique-se de ter atendido aos requisitos mencionados acima.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Instalação
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Clone o repositório:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+   ```bash
+   git clone https://github.com/seunome/seu-web-app.git
+   ```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+2. Acesse o diretório do projeto:
 
-## Learn More
+   ```bash
+   cd web
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3. Instale as dependências:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+   Usando npm:
+
+   ```bash
+   npm install
+   ```
+
+   Ou usando yarn:
+
+   ```bash
+   yarn install
+   ```
+
+### Configuração
+
+Explique quaisquer etapas de configuração, variáveis de ambiente ou chaves secretas necessárias para o seu aplicativo. Se você não tiver nenhuma, pode pular esta seção.
+
+### Uso
+
+Descreva como executar o seu web app e forneça informações relevantes para os usuários. Inclua exemplos de código, se necessário.
+
+Usando npm:
+
+```bash
+npm install
+```
+
+Ou usando yarn:
+
+```bash
+yarn install
+```
+
+Seu web app deverá estar sendo executado em http://localhost:3000.
+
+### Estrutura de Diretórios
+
+Descreva a organização do código-fonte do seu projeto. Você pode listar os principais diretórios e seus propósitos aqui.
+
+```bash
+src/
+|-- assets/
+|-- components/
+|-- hooks/
+|-- pages/
+|-- services/
+|--|-- messages/
+|--|-- queries/
+|--|-- types/
+|-- store/
+|-- App.tsx
+|-- index.tsx
+public/
+|-- index.html
+package.json
+tsconfig.json
+README.md
+```
+
+### Licença
+
+Este projeto está licenciado sob a Licença MIT. Consulte o arquivo LICENSE para obter detalhes.
+
+```bash
+Esse README.md agora inclui informações específicas sobre o aplicativo de Controle de Chaves. Lembre-se de personalizar ainda mais com detalhes específicos sobre como o aplicativo funciona e quaisquer recursos adicionais que ele possa ter.
+```
