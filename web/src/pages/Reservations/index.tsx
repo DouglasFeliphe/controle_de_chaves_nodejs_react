@@ -1,29 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import Menu from '../../components/Menu';
 import api from '../../services/api';
-
-interface Reservations {
-  id: number;
-  key_name: string;
-  key_number: number;
-  user_name: string;
-  user_registration_number: number;
-  created_at: string;
-  returned_at: string;
-  // status: boolean
-}
+import { ReservationsType } from '../../services/types/reservations.types';
+import { useGetReservations } from '../../services/queries/useReservationsQuery';
 
 const Reservations = () => {
-  const [reservations, setReservations] = useState<Reservations[]>();
-
   // listando as reservas
-  useEffect(() => {
-    api.get('reservations/').then((response) => {
-      setReservations(response.data);
-    });
-  }, []);
+  const { data: reservations, isLoading } = useGetReservations();
 
-  const StatusComponent = (reservation: Reservations) => {
+  const StatusComponent = (reservation: ReservationsType) => {
     return reservation.returned_at ? (
       <td>
         <span className={`badge badge-success`}>

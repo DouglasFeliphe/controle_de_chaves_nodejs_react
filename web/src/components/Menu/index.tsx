@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faKey, faCalendar, faUsers } from '@fortawesome/free-solid-svg-icons'; // Import the specific icons you want to use
 
@@ -54,21 +55,25 @@ const Menu = ({ children }: any) => {
           <div className='position-sticky p-3'>
             <ul className='nav flex-column'>
               <li className='nav-item d-flex justify-content-between align-items-center'>
-                <a className='nav-link active' href='/keys'>
+                <Link className='nav-link' to='/keys'>
                   <FontAwesomeIcon icon={faKey} /> Chaves
-                </a>
+                </Link>
+
                 <span className='badge badge-primary badge-pill'>5</span>
               </li>
               <li className='nav-item d-flex justify-content-between align-items-center'>
-                <a className='nav-link' href='/reservations'>
+                <Link className='nav-link' to='/reservations'>
                   <FontAwesomeIcon icon={faCalendar} /> Reservas
-                </a>
+                </Link>
+
                 <span className='badge badge-success badge-pill'>5</span>
               </li>
               <li className='nav-item d-flex justify-content-between align-items-center'>
-                <a className='nav-link' href='/users'>
+                {/* <a className='nav-link' href='/users'> */}
+                <Link className='nav-link' to='/users'>
                   <FontAwesomeIcon icon={faUsers} /> Usuários
-                </a>
+                </Link>
+
                 <span className='badge badge-info badge-pill'>5</span>
               </li>
             </ul>

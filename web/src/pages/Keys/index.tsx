@@ -1,24 +1,16 @@
 import React, { useState, useEffect, FormEvent } from 'react';
-import ButtonCreate from '../../components/ButtonCreate';
 import Card from '../../components/Card';
 import api from '../../services/api';
 import Menu from '../../components/Menu';
 import ImgChave from '../../assets/chave.jpg';
+import { useGetKeys } from '../../services/queries/useKeysQuery';
+import CreateKey from './CreateKey';
+import { ButtonWithModal } from '../../components/ButtonWithFormModal';
+import { MODAL_KEY_ID, MODAL_RESERVATION_ID } from '../../constants/modalID';
+import CreateReservation from '../Reservations/CreateReservation';
 
-interface Keys {
-  number: number;
-  name: string;
-}
-
-const Keys: React.FC = () => {
-  const [keys, setKeys] = useState<Keys[]>([]);
-
-  // listando as chaves
-  useEffect(() => {
-    api.get('keys/').then((response) => {
-      setKeys(response.data);
-    });
-  }, []);
+const Keys = () => {
+  const { data: keys, isLoading } = useGetKeys();
 
   async function handleDeleteKey(_keyNumber: number) {
     try {
@@ -41,14 +33,26 @@ const Keys: React.FC = () => {
 
           {/* CHAVES */}
           <div className='row d-flex'>
-            {keys.map((key) => (
+            {keys?.map((key) => (
               <Card key={key.number} image={ImgChave} data={key}>
-                <ButtonCreate modal='Reservations' />
+                <ButtonWithModal modalId={MODAL_RESERVATION_ID}>
+                  <ButtonWithModal.Button text='Nova Reserva' />
+                  <ButtonWithModal.Modal
+                    title='Reservar Chave'
+                    content={<CreateReservation />}
+                  />
+                </ButtonWithModal>
               </Card>
             ))}
           </div>
 
-          <ButtonCreate modal='Keys' />
+          <ButtonWithModal modalId={MODAL_KEY_ID}>
+            <ButtonWithModal.Button text='Nova Chave' />
+            <ButtonWithModal.Modal
+              title='Criar Chave'
+              content={<CreateKey />}
+            />
+          </ButtonWithModal>
         </main>
       </div>
     </Menu>

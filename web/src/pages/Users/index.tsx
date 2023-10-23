@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Menu from '../../components/Menu';
 import Card from '../../components/Card';
 // import ImgUsuario from '../../assets/usuario.png';
 import api from '../../services/api';
-import ButtonCreate from '../../components/ButtonCreate';
+
+import { useGetUsers } from '../../services/queries/useUsersQuery';
+import CreateUser from './CreateUser';
+import { ButtonWithModal } from '../../components/ButtonWithFormModal';
+import { MODAL_USER_ID } from '../../constants/modalID';
 
 interface Users {
   registration_number: number;
@@ -11,15 +15,11 @@ interface Users {
   image: string;
 }
 
-const Users = () => {
-  const [users, setUsers] = useState<Users[]>([]);
+const MODAL_ID = 'modal-user';
 
+const Users = () => {
   // listando os usuários
-  useEffect(() => {
-    api.get('users/').then((response) => {
-      setUsers(response.data);
-    });
-  }, []);
+  const { data: users, isLoading } = useGetUsers();
 
   return (
     <Menu>
@@ -29,7 +29,7 @@ const Users = () => {
 
           {/* USUÁRIOS */}
           <div className='row d-flex'>
-            {users.map((user, index) => (
+            {users?.map((user, index) => (
               <Card
                 key={user.registration_number}
                 data={user}
@@ -37,7 +37,13 @@ const Users = () => {
               />
             ))}
           </div>
-          <ButtonCreate modal='Users' />
+          <ButtonWithModal modalId={MODAL_USER_ID}>
+            <ButtonWithModal.Button text='Criar Usuário' />
+            <ButtonWithModal.Modal
+              title='Novo Usuário'
+              content={<CreateUser />}
+            />
+          </ButtonWithModal>
         </main>
       </div>
     </Menu>
