@@ -9,7 +9,7 @@ interface ModalProps {
   children: React.ReactNode;
 }
 
-export const FormModal = ({ modalId, children }: ModalProps) => {
+export const ModalComponent = ({ modalId, children }: ModalProps) => {
   return (
     <div className='modal fade' id={modalId}>
       <div className='modal-dialog modal-dialog-centered'>
@@ -19,6 +19,6 @@ export const FormModal = ({ modalId, children }: ModalProps) => {
   );
 };
 
-FormModal.Header = FormModalHeader;
-FormModal.Body = FormModalBody;
-FormModal.Footer = FormModalFooter;
+ModalComponent.Header = FormModalHeader;
+ModalComponent.Body = FormModalBody;
+ModalComponent.Footer = FormModalFooter;

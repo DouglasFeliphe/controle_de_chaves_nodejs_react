@@ -6,7 +6,7 @@ import api from '../../services/api';
 
 import { useGetUsers } from '../../services/queries/useUsersQuery';
 import CreateUser from './CreateUser';
-import { ButtonWithModal } from '../../components/ButtonWithFormModal';
+import { ButtonWithModal } from '../../components/ButtonWithModal';
 import { MODAL_USER_ID } from '../../constants/modalID';
 
 interface Users {
@@ -37,12 +37,9 @@ const Users = () => {
               />
             ))}
           </div>
-          <ButtonWithModal modalId={MODAL_USER_ID}>
-            <ButtonWithModal.Button text='Criar Usuário' />
-            <ButtonWithModal.Modal
-              title='Novo Usuário'
-              content={<CreateUser />}
-            />
+          <ButtonWithModal title='Novo Usuário' modalId={MODAL_USER_ID}>
+            <ButtonWithModal.Button />
+            <ButtonWithModal.Modal content={<CreateUser />} />
           </ButtonWithModal>
         </main>
       </div>

@@ -1,21 +1,18 @@
 import React, { useState } from 'react';
 
 interface ButtonProps {
-  text: string;
+  title?: string;
   modalId?: string;
-  onClick?: () => void;
 }
 
-export const Button = ({ text, modalId, onClick }: ButtonProps) => {
-  console.log('Button modalId :', modalId);
+export const Button = ({ title, modalId }: ButtonProps) => {
   return (
     <button
       className='btn btn-primary btn-lg m-5'
       data-toggle='modal'
       data-target={`#${modalId}`}
-      onClick={onClick}
     >
-      <i className='fas fa-plus' /> {text}
+      <i className='fas fa-plus' /> {title}
     </button>
   );
 };

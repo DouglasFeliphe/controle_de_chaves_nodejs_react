@@ -5,9 +5,5 @@ interface FormModalBody {
 }
 
 export const FormModalBody = ({ children }: FormModalBody) => {
-  return (
-    <div className='modal-body p-5'>
-      <form>{children}</form>
-    </div>
-  );
+  return <div className='modal-body p-5'>{children}</div>;
 };

@@ -17,8 +17,9 @@ const CreateUser: React.FC = () => {
   const { mutateAsync: createUserAsync, isLoading: createUserIsLoading } =
     useCreateUser();
 
-  async function handleCreateUser(event: FormEvent) {
-    event.preventDefault();
+  function handleCreateUser(event: FormEvent) {
+    console.log('handleCreateUser: ');
+    // event.preventDefault();
 
     // const userData: PostUserRequest = {
     //   registration_number: registrationNumber,
@@ -32,13 +33,20 @@ const CreateUser: React.FC = () => {
     // console.log('userData :', userData);
 
     // await createUserAsync(userData);
-    // closeModal(modals.Users.id);
+
+    // Close the modal by triggering a click event
+    // const modalElement = document.getElementById('modal-user');
+    // console.log('modalElement :', modalElement);
+
+    // if (modalElement) {
+    //   modalElement.click();
+    // }
 
     //eslint-disable-next-line
   }
 
   return (
-    <>
+    <form onSubmit={(e) => handleCreateUser(e)}>
       <div className='form-group'>
         <label htmlFor='nome'>Nome:</label>
         <input
@@ -82,7 +90,7 @@ const CreateUser: React.FC = () => {
           ))}
         </select>
       </div>
-    </>
+    </form>
   );
 };
 

@@ -1,7 +1,9 @@
 import React from 'react';
+
 interface FormModalHeader {
-  title: string;
+  title?: string;
 }
+
 export const FormModalHeader = ({ title }: FormModalHeader) => {
   return (
     <div className='modal-header'>

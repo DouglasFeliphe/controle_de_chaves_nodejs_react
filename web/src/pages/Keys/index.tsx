@@ -5,7 +5,7 @@ import Menu from '../../components/Menu';
 import ImgChave from '../../assets/chave.jpg';
 import { useGetKeys } from '../../services/queries/useKeysQuery';
 import CreateKey from './CreateKey';
-import { ButtonWithModal } from '../../components/ButtonWithFormModal';
+import { ButtonWithModal } from '../../components/ButtonWithModal';
 import { MODAL_KEY_ID, MODAL_RESERVATION_ID } from '../../constants/modalID';
 import CreateReservation from '../Reservations/CreateReservation';
 
@@ -35,23 +35,21 @@ const Keys = () => {
           <div className='row d-flex'>
             {keys?.map((key) => (
               <Card key={key.number} image={ImgChave} data={key}>
-                <ButtonWithModal modalId={MODAL_RESERVATION_ID}>
-                  <ButtonWithModal.Button text='Nova Reserva' />
-                  <ButtonWithModal.Modal
-                    title='Reservar Chave'
-                    content={<CreateReservation />}
-                  />
+                <ButtonWithModal
+                  title='Nova Reserva'
+                  modalId={MODAL_RESERVATION_ID}
+                >
+                  {/* NOVA RESERVA */}
+                  <ButtonWithModal.Button />
+                  <ButtonWithModal.Modal content={<CreateReservation />} />
                 </ButtonWithModal>
               </Card>
             ))}
           </div>
 
-          <ButtonWithModal modalId={MODAL_KEY_ID}>
-            <ButtonWithModal.Button text='Nova Chave' />
-            <ButtonWithModal.Modal
-              title='Criar Chave'
-              content={<CreateKey />}
-            />
+          <ButtonWithModal title='Nova Chave' modalId={MODAL_KEY_ID}>
+            <ButtonWithModal.Button />
+            <ButtonWithModal.Modal content={<CreateKey />} />
           </ButtonWithModal>
         </main>
       </div>

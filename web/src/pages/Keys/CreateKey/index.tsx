@@ -37,7 +37,7 @@ const CreateKey = () => {
   }
 
   return (
-    <>
+    <form onSubmit={handleCreateKey}>
       <div className='form-group'>
         <label htmlFor='email'>Nome: </label>
         <input
@@ -56,7 +56,7 @@ const CreateKey = () => {
           onChange={(e) => setNumber(parseInt(e.target.value))}
         />
       </div>
-    </>
+    </form>
   );
 };
 
