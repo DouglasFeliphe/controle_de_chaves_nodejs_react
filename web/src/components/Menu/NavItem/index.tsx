@@ -1,18 +1,18 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState } from 'react';
 
 const NavItem = ({ text }: any) => {
+  const [isActive, setIsActive] = useState(false);
 
-    const [isActive, setIsActive] = useState(false)
+  return (
+    <li className='nav-item'>
+      <span
+        className={isActive ? 'nav-link active' : 'nav-link'}
+        onClick={() => setIsActive(!!true)}
+      >
+        {text}
+      </span>
+    </li>
+  );
+};
 
-    return (
-        <li className="nav-item">
-            <span
-                className={isActive ? 'nav-link active' : 'nav-link'}
-                onClick={() => setIsActive(!!true)}>
-                {text}
-            </span>
-        </li>
-    )
-}
-
-export default NavItem
+export default NavItem;

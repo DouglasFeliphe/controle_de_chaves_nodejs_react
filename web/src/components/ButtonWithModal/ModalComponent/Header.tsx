@@ -1,10 +1,10 @@
 import React from 'react';
 
-interface FormModalHeader {
+interface ModalHeader {
   title?: string;
 }
 
-export const FormModalHeader = ({ title }: FormModalHeader) => {
+export const ModalHeader = ({ title }: ModalHeader) => {
   return (
     <div className='modal-header'>
       <h4 className='modal-title'>{title}</h4>

@@ -1,5 +1,5 @@
 import api from './api';
-import { GetKeysResponse } from './types/keys.types';
+import { GetKeysResponse, KeysType, PostKeyRequest } from './types/keys.types';
 
 export async function getKeys(): Promise<GetKeysResponse | undefined> {
   try {
@@ -8,4 +8,8 @@ export async function getKeys(): Promise<GetKeysResponse | undefined> {
   } catch (error) {
     console.log('error getting keys', error);
   }
+}
+
+export async function createKey(keyData: PostKeyRequest) {
+  await api.post('keys/', keyData);
 }

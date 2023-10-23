@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import connection from '../database/connection';
+
 class KeysController {
   async index(request: Request, response: Response) {
     try {

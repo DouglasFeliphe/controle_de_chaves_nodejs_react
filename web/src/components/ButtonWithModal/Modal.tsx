@@ -1,7 +1,7 @@
 import React, { ReactNode, useState } from 'react';
 import { Loader } from '../Loader';
 import { ModalComponent } from './ModalComponent';
-import { FormModalFooter } from './ModalComponent/Footer';
+import { ModalActions } from './ModalComponent/Actions';
 import { JsxElement } from 'typescript';
 
 interface ButtonProps {
@@ -17,7 +17,7 @@ export const Modal = ({ title, modalId, content }: ButtonProps) => {
     <ModalComponent modalId={modalId}>
       <ModalComponent.Header title={title} />
       <ModalComponent.Body>{content}</ModalComponent.Body>
-      <FormModalFooter />
+      {/* <ModalActions /> */}
     </ModalComponent>
   );
 };

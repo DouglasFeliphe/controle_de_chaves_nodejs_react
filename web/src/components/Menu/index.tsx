@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faKey, faCalendar, faUsers } from '@fortawesome/free-solid-svg-icons'; // Import the specific icons you want to use
 
-const Menu = ({ children }: any) => {
+interface MenuProps {
+  title: string;
+  children: ReactNode;
+}
+
+const Menu = ({ title, children }: MenuProps) => {
   const [user, setUser] = useState({
     name: 'John Doe',
     email: 'john.doe@example.com',
@@ -82,7 +87,12 @@ const Menu = ({ children }: any) => {
 
         {/* Main content */}
         <main className='col-md-9 ms-sm-auto col-lg-10 px-md-4'>
-          {children}
+          <div className='row m-5'>
+            <div role='main' className='container'>
+              <h1 className='mb-5'>{title}</h1>
+              {children}
+            </div>
+          </div>
         </main>
       </div>
     </div>

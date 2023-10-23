@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { FormModalHeader } from './Header';
-import { FormModalBody } from './Body';
-import { FormModalFooter } from './Footer';
+import { ModalHeader } from './Header';
+import { ModalBody } from './Body';
+import { ModalActions } from './Actions';
 
 interface ModalProps {
   modalId?: string;
@@ -19,6 +19,6 @@ export const ModalComponent = ({ modalId, children }: ModalProps) => {
   );
 };
 
-ModalComponent.Header = FormModalHeader;
-ModalComponent.Body = FormModalBody;
-ModalComponent.Footer = FormModalFooter;
+ModalComponent.Header = ModalHeader;
+ModalComponent.Body = ModalBody;
+ModalComponent.ModalActions = ModalActions;

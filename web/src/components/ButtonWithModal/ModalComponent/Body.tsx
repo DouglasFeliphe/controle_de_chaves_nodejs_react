@@ -1,9 +1,9 @@
 import React from 'react';
 
-interface FormModalBody {
+interface ModalBody {
   children: React.ReactNode;
 }
 
-export const FormModalBody = ({ children }: FormModalBody) => {
+export const ModalBody = ({ children }: ModalBody) => {
   return <div className='modal-body p-5'>{children}</div>;
 };

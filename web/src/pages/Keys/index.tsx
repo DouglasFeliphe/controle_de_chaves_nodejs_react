@@ -6,8 +6,8 @@ import ImgChave from '../../assets/chave.jpg';
 import { useGetKeys } from '../../services/queries/useKeysQuery';
 import CreateKey from './CreateKey';
 import { ButtonWithModal } from '../../components/ButtonWithModal';
-import { MODAL_KEY_ID, MODAL_RESERVATION_ID } from '../../constants/modalID';
 import CreateReservation from '../Reservations/CreateReservation';
+import { SearchInput } from '../../shared/components/SearchInput';
 
 const Keys = () => {
   const { data: keys, isLoading } = useGetKeys();
@@ -26,33 +26,30 @@ const Keys = () => {
   }
 
   return (
-    <Menu>
-      <div className='row m-5'>
-        <main role='main' className='container'>
-          <h1 className='mb-5'>Chaves</h1>
-
-          {/* CHAVES */}
-          <div className='row d-flex'>
-            {keys?.map((key) => (
-              <Card key={key.number} image={ImgChave} data={key}>
-                <ButtonWithModal
-                  title='Nova Reserva'
-                  modalId={MODAL_RESERVATION_ID}
-                >
-                  {/* NOVA RESERVA */}
-                  <ButtonWithModal.Button />
-                  <ButtonWithModal.Modal content={<CreateReservation />} />
-                </ButtonWithModal>
-              </Card>
-            ))}
-          </div>
-
-          <ButtonWithModal title='Nova Chave' modalId={MODAL_KEY_ID}>
-            <ButtonWithModal.Button />
-            <ButtonWithModal.Modal content={<CreateKey />} />
-          </ButtonWithModal>
-        </main>
+    <Menu title='Chaves'>
+      <div className='row'>
+        <div className='col-md-6'>
+          <SearchInput onSearch={() => {}} />
+        </div>
       </div>
+
+      {/* CHAVES */}
+      <div className='row d-flex'>
+        {keys?.map((key) => (
+          <Card key={key.number} image={ImgChave} data={key}>
+            <ButtonWithModal title='Nova Reserva' modalId='modal-reservation'>
+              {/* NOVA RESERVA */}
+              <ButtonWithModal.Button />
+              <ButtonWithModal.Modal content={<CreateReservation />} />
+            </ButtonWithModal>
+          </Card>
+        ))}
+      </div>
+
+      <ButtonWithModal title='Nova Chave' modalId='modal-key'>
+        <ButtonWithModal.Button />
+        <ButtonWithModal.Modal content={<CreateKey />} />
+      </ButtonWithModal>
     </Menu>
   );
 };

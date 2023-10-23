@@ -5,7 +5,7 @@ interface Loader {
   customText?: string;
 }
 
-export const Loader = ({ customText, showText = true }: Loader) => {
+export const Loader = ({ customText, showText = false }: Loader) => {
   return (
     <>
       <span
@@ -13,7 +13,7 @@ export const Loader = ({ customText, showText = true }: Loader) => {
         role='status'
         aria-hidden='true'
       />{' '}
-      <>{showText ? (customText ? customText : 'Salvando...') : null}</>
+      {showText && (customText ? customText : 'Salvando...')}
     </>
   );
 };

@@ -1,10 +1,11 @@
 import React from 'react';
 import { Button } from './Button';
 import { Modal } from './Modal';
+import { ModalKeys } from '../../shared/types/modal';
 
 interface ButtonWithModalProps {
   title: string;
-  modalId: string;
+  modalId: ModalKeys;
   children: React.ReactNode;
 }
 

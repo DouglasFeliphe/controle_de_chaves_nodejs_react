@@ -1,11 +1,11 @@
 import React from 'react';
 import { Loader } from '../../Loader';
 
-interface FormModalFooter {
+interface ModalActions {
   isLoading?: string;
 }
 
-export const FormModalFooter = ({ isLoading }: FormModalFooter) => {
+export const ModalActions = ({ isLoading }: ModalActions) => {
   return (
     <div className='modal-footer'>
       <button type='submit' className='btn btn-success'>
